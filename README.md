@@ -189,7 +189,7 @@ SAGE_DB_PATH="C:\\Sage\\Data\\TEST.gcm" cargo test
 - [x] Gestion d'erreurs Rust
 
 ### Version 0.2.0 - Module Comptabilité
-- [ ] Entités Compte, Écriture, Journal
+- [ ] Entités Tiers, Plan Comptable, Écriture, Journal
 - [ ] CRUD opérations comptables
 - [ ] Validation des données
 - [ ] Tests d'intégration
@@ -208,7 +208,7 @@ SAGE_DB_PATH="C:\\Sage\\Data\\TEST.gcm" cargo test
 ## ⚠️ Limitations connues
 
 - **Windows uniquement** - Dépendance COM native
-- **Architecture** - La DLL et l'executable doivent avoir la même architecture (32/64-bit)
+- **Architecture** - La DLL et l'executable doivent avoir la même architecture (32-bit)
 - **Licences Sage** - Respect des termes de licence Sage 100c
 - **Version Sage** - Testé sur Sage 100c v10.05
 

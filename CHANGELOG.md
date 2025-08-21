@@ -46,9 +46,11 @@ println!("Base ouverte: {}", result.to_string()?);
 
 ### 🎯 Prochaines étapes (v0.2.0)
 - Implémentation complète de la conversion VARIANT
-- Module Comptabilité avec entités Compte, Écriture, Journal
+- Module Comptabilité avec Tiers, Plan Comptable, Écriture, Journal
 - Méthodes métier pour Open() avec paramètres
 - Support complet des opérations CRUD
+- Validation des données
+- Tests d'intégration
 
 ---
 

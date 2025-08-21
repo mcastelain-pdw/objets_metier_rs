@@ -1,10 +1,15 @@
 mod com;
 mod errors;
 
-use com::{ComInstance, SafeDispatch, SafeVariant};
+use com::{ComInstance, SafeDispatch, SafeVariant, MemberType};
+#[allow(unused_imports)] // Sera utilisé dans les futures versions  
+use com::MemberInfo;
 use errors::SageResult;
 
 const BSCPTA_CLSID: &str = "309DE0FB-9FB8-4F4E-8295-CC60C60DAA33";
+
+#[allow(dead_code)] // A supprimer à la finalisation de la v0.2.0
+const BSCIAL_CLSID: &str = "ED0EC116-16B8-44CC-A68A-41BF6E15EB3F";
 
 fn main() -> SageResult<()> {
     // Créer l'instance COM avec gestion automatique
@@ -17,21 +22,12 @@ fn main() -> SageResult<()> {
         Err(e) => println!("⚠️  Impossible d'obtenir les infos de type: {}", e),
     }
 
-    // Lister les méthodes disponibles
-    match instance.list_methods() {
-        Ok(methods) => {
-            println!("🔧 Méthodes disponibles:");
-            for (id, name) in methods.iter().take(10) {
-                // Limiter à 10 pour l'exemple
-                println!("   [{}] {}", id, name);
-            }
-        }
-        Err(e) => println!("⚠️  Impossible de lister les méthodes: {}", e),
-    }
+    // Lister séparément méthodes et propriétés
+    display_methods_and_properties(&instance)?;
 
     // Tester les appels de méthodes sûrs
     if instance.supports_automation() {
-        println!("🔍 Test des appels de méthodes sûrs...");
+        println!("\n🔍 Test des appels de méthodes sûrs...");
         test_safe_method_calls(&instance)?;
     }
 
@@ -39,31 +35,80 @@ fn main() -> SageResult<()> {
     Ok(())
 }
 
+fn display_methods_and_properties(instance: &ComInstance) -> SageResult<()> {
+    // Afficher les méthodes
+    match instance.list_methods_only() {
+        Ok(methods) => {
+            println!("\n🔧 MÉTHODES disponibles ({} trouvées):", methods.len());
+            for method in methods.iter().take(15) {
+                let params = method.param_count.map_or_else(
+                    || "?".to_string(),
+                    |count| count.to_string()
+                );
+                let return_type = method.return_type.as_deref().unwrap_or("?");
+                println!("   [{}] {}({} params) -> {}", 
+                    method.id, method.name, params, return_type);
+            }
+            if methods.len() > 15 {
+                println!("   ... et {} autres méthodes", methods.len() - 15);
+            }
+        }
+        Err(e) => println!("⚠️  Impossible de lister les méthodes: {}", e),
+    }
+
+    // Afficher les propriétés groupées
+    match instance.group_properties() {
+        Ok(properties) => {
+            println!("\n📋 PROPRIÉTÉS disponibles ({} trouvées):", properties.len());
+            for (name, variants) in properties.iter().take(15) {
+                let types: Vec<String> = variants.iter().map(|v| {
+                    match v.member_type {
+                        MemberType::PropertyGet => "get".to_string(),
+                        MemberType::PropertyPut => "put".to_string(),
+                        MemberType::PropertyPutRef => "putref".to_string(),
+                        _ => "?".to_string(),
+                    }
+                }).collect();
+                
+                let return_type = variants.first()
+                    .and_then(|v| v.return_type.as_deref())
+                    .unwrap_or("?");
+                    
+                let id = variants.first().map_or(0, |v| v.id);
+                
+                println!("   [{}] {} [{}] -> {}", 
+                    id, name, types.join("/"), return_type);
+            }
+            if properties.len() > 15 {
+                println!("   ... et {} autres propriétés", properties.len() - 15);
+            }
+        }
+        Err(e) => println!("⚠️  Impossible de lister les propriétés: {}", e),
+    }
+
+    Ok(())
+}
+
 fn test_safe_method_calls(instance: &ComInstance) -> SageResult<()> {
     let dispatch = instance.dispatch()?;
     let safe_dispatch = SafeDispatch::new(dispatch);
 
-    // Test des méthodes communes
-    let test_methods = [(1, "IsOpen"), (10, "Name"), (5, "DatabaseInfo")];
+    // Tester quelques propriétés communes
+    let test_properties = [
+        ("IsOpen", "Vérifier si une base est ouverte"),
+        ("Name", "Nom de l'application"),
+        ("Version", "Version de l'application"),
+    ];
 
-    for (method_id, method_name) in test_methods {
-        match safe_dispatch.call_method(method_id, method_name) {
+    for (prop_name, description) in test_properties {
+        match safe_dispatch.call_method_by_name(prop_name, &[]) {
             Ok(result) => {
-                println!("✅ {}(): {}", method_name, format_variant_result(&result));
+                println!("✅ {} ({}): {}", 
+                    prop_name, description, format_variant_result(&result));
             }
             Err(e) => {
-                println!("❌ {}(): {}", method_name, e);
+                println!("❌ {} ({}): {}", prop_name, description, e);
             }
-        }
-    }
-
-    // Test d'appel par nom si possible
-    match safe_dispatch.call_method_by_name("IsOpen", &[]) {
-        Ok(result) => {
-            println!("✅ IsOpen() par nom: {}", format_variant_result(&result));
-        }
-        Err(e) => {
-            println!("ℹ️  Appel par nom non supporté: {}", e);
         }
     }
 

@@ -86,28 +86,46 @@ cargo run
 ### Exemple d'utilisation
 
 ```rust
-use objets_metier_rs::{SageConnection, SageError};
+use objets_metier_rs::com::ComInstance;
+use objets_metier_rs::errors::SageResult;
 
-fn main() -> Result<(), SageError> {
-    // Connexion à la base Sage
-    let mut sage = SageConnection::new()?;
-    sage.open_database("C:\\Sage\\Data\\BIJOU.gcm", "ADMIN", "")?;
+fn main() -> SageResult<()> {
+    // Créer une instance COM de BSCPTAApplication100c
+    let instance = ComInstance::new("309DE0FB-9FB8-4F4E-8295-CC60C60DAA33")?;
+    println!("✅ Instance COM créée avec succès !");
     
-    // Lecture des comptes
-    let comptes = sage.comptabilite().list_comptes()?;
-    println!("Nombre de comptes: {}", comptes.len());
+    // Vérifier le support de l'automation
+    if instance.supports_automation() {
+        // Obtenir les informations de type
+        let type_info = instance.get_type_info()?;
+        println!("📋 {}", type_info);
+        
+        // Découvrir les méthodes disponibles
+        let methods = instance.list_methods()?;
+        println!("🔧 {} méthodes trouvées", methods.len());
+        
+        // Découvrir et séparer méthodes/propriétés (v0.1.0+)
+        let members = instance.list_members()?;
+        let methods_only = instance.list_methods_only()?;
+        let properties = instance.group_properties()?;
+        
+        println!("📊 {} membres total", members.len());
+        println!("🔧 {} méthodes pures", methods_only.len()); 
+        println!("📋 {} groupes de propriétés", properties.len());
+        
+        // Appels de méthodes sécurisés
+        use objets_metier_rs::com::SafeDispatch;
+        let dispatch = SafeDispatch::new(instance.dispatch()?);
+        
+        match dispatch.call_method_by_name("IsOpen", &[]) {
+            Ok(result) => println!("IsOpen: {}", result.type_name()),
+            Err(e) => println!("Erreur: {}", e),
+        }
+    }
     
-    // Création d'une écriture
-    let ecriture = sage.comptabilite()
-        .create_ecriture()?
-        .journal("VT")
-        .date("01/01/2024")
-        .piece("FACT001")
-        .compte_debit("411000", 1000.0)
-        .compte_credit("701000", 1000.0)
-        .save()?;
-    
-    println!("Écriture créée: {}", ecriture.numero());
+    Ok(())
+    // Instance libérée automatiquement (RAII)
+}
     
     sage.close()?;
     Ok(())
@@ -134,7 +152,86 @@ fn main() -> Result<(), SageError> {
 | 📊 **Immobilisations** | 📋 Planifié | Biens, amortissements |
 | 🏦 **Trésorerie** | 📋 Planifié | Banques, échéances |
 
-## 🛠️ Développement
+## � Découverte des interfaces COM
+
+### Inspection intelligente des membres
+
+La bibliothèque offre une classification intelligente des membres COM basée sur les conventions Sage 100c :
+
+```rust
+use objets_metier_rs::com::{ComInstance, MemberType};
+
+let instance = ComInstance::new("309DE0FB-9FB8-4F4E-8295-CC60C60DAA33")?;
+
+// Découverte avec classification intelligente
+let members = instance.list_members()?;
+for member in members {
+    match member.member_type {
+        MemberType::Method => println!("🔧 Méthode: {} ({:?} params)", 
+                                      member.name, member.param_count),
+        MemberType::PropertyGet => println!("📖 Propriété: {} -> {:?}", 
+                                           member.name, member.return_type),
+        // ...
+    }
+}
+
+// Résultats typiques pour BSCPTAApplication100c:
+// 🔧 7 méthodes (Open, Close, Create, DatabaseInfo, etc.)
+// 📖 40 propriétés (FactoryTiers, FactoryClient, Name, IsOpen, etc.)
+```
+
+### Classification automatique
+
+L'algorithme de classification reconnaît :
+
+- **Factory*** → Propriétés retournant des objets métier
+- **Is***, **Name**, **Version** → Propriétés d'état/information  
+- **Open**, **Close**, **Create** → Méthodes d'action
+- **DatabaseInfo**, **Synchro** → Méthodes de traitement
+
+### Filtrage par type
+
+```rust
+// Filtrage avancé
+let methods_only = instance.list_methods_only()?;     // 7 méthodes
+let properties = instance.list_properties()?;         // 40 propriétés  
+let grouped_props = instance.group_properties()?;     // Propriétés groupées
+
+println!("Trouvé {} méthodes et {} propriétés", 
+         methods_only.len(), properties.len());
+
+// Exemples de propriétés Factory découvertes:
+// - FactoryTiers -> Object (gestion des tiers)
+// - FactoryClient -> Object (gestion des clients)  
+// - FactoryFournisseur -> Object (gestion des fournisseurs)
+// - FactoryCompteG -> Object (gestion du plan comptable)
+```
+
+### Informations des membres
+
+Chaque membre découvert fournit :
+
+- **ID** : Identifiant unique COM (DISPID)
+- **Nom** : Nom de la méthode/propriété
+- **Type** : Method, PropertyGet, PropertyPut, PropertyPutRef
+- **Paramètres** : Nombre de paramètres estimé selon le type
+- **Type de retour** : Type de la valeur retournée (Object, String, Boolean, etc.)
+
+### Appels sécurisés
+
+```rust
+use objets_metier_rs::com::SafeDispatch;
+
+let dispatch = SafeDispatch::new(instance.dispatch()?);
+
+// Appel par nom avec gestion d'erreur
+match dispatch.call_method_by_name("IsOpen", &[]) {
+    Ok(result) => println!("Base ouverte: {}", result.type_name()),
+    Err(e) => println!("Erreur: {}", e),
+}
+```
+
+## �🛠️ Développement
 
 ### Contribuer
 

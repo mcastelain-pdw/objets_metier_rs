@@ -1,11 +1,11 @@
-pub mod dispatch;
 pub mod instance;
-pub mod safe_string;
+pub mod dispatch;
 pub mod variant;
+pub mod safe_string;
 
+pub use instance::{ComInstance, MemberInfo, MemberType};
 pub use dispatch::SafeDispatch;
-pub use instance::ComInstance;
 pub use variant::SafeVariant;
-// SafeString sera utilisé dans les futures versions
-#[allow(unused_imports)]
+#[allow(unused_imports)] // Sera utilisé dans les futures versions
 pub use safe_string::SafeString;
+

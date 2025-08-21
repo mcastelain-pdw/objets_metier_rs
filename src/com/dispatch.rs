@@ -13,7 +13,8 @@ impl<'a> SafeDispatch<'a> {
         SafeDispatch { dispatch }
     }
 
-    /// Appelle une méthode sans paramètres
+    /// Appelle une méthode COM par ID avec paramètres
+    #[allow(dead_code)] // Sera utilisé dans les futures versions
     pub fn call_method(&self, method_id: i32, method_name: &str) -> SageResult<SafeVariant> {
         self.call_method_with_params(method_id, method_name, &[])
     }

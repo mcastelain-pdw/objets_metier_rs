@@ -248,7 +248,8 @@ impl ComInstance {
             "Initialize", "Finalize", "Process", "Calculate",
             "Search", "Find", "Locate", "Get", "Set", "Move",
             "Copy", "Paste", "Cut", "Undo", "Redo", "Backup",
-            "Restore", "Synchronize", "Synchro", "ReadFrom"
+            "Restore", "Synchronize", "Synchro", "ReadFrom",
+            "List", "ExistNumero", "Read", "Query"
         ];
         
         // Si le nom commence par un verbe d'action

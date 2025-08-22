@@ -35,7 +35,7 @@ fn demo_csharp_connection_style() -> SageResult<()> {
     println!("✅ Base définie: D:\\TMP\\BIJOU.MAE");
     
     // Vérification que le nom a été défini
-    let current_name = app.name()?;
+    let current_name = app.get_name()?;
     println!("📋 Nom actuel: '{}'", current_name);
     
     // Équivalent C# : _mCpta.Loggable.UserName = "<Administrateur>";
@@ -48,7 +48,7 @@ fn demo_csharp_connection_style() -> SageResult<()> {
     println!("✅ Mot de passe défini: (vide)");
     
     // Vérification que les credentials ont été définis
-    let current_username = loggable.user_name()?;
+    let current_username = loggable.get_user_name()?;
     println!("👤 Utilisateur actuel: '{}'", current_username);
     
     // Équivalent C# : _mCpta.Open();
@@ -63,8 +63,8 @@ fn demo_csharp_connection_style() -> SageResult<()> {
                 
                 // Afficher les informations de connexion
                 println!("📊 Informations de connexion:");
-                println!("   - Base: {}", app.name()?);
-                println!("   - Utilisateur: {}", app.loggable()?.user_name()?);
+                println!("   - Base: {}", app.get_name()?);
+                println!("   - Utilisateur: {}", app.loggable()?.get_user_name()?);
                 println!("   - Connecté: {}", app.loggable()?.is_logged()?);
                 println!("   - Admin: {}", app.loggable()?.is_administrator()?);
                 
@@ -117,7 +117,7 @@ fn test_different_database_paths() -> SageResult<()> {
             Err(e) => println!("  ❌ Erreur: {}", e),
         }
         
-        match app.name() {
+        match app.get_name() {
             Ok(name) => println!("  📋 Nom lu: '{}'", name),
             Err(e) => println!("  ❌ Lecture échouée: {}", e),
         }

@@ -30,7 +30,7 @@ fn elegant_rust_approach() -> SageResult<()> {
     println!("✅ Application Sage créée");
     
     // Accès direct aux propriétés de base - Équivalent : app.Name, app.IsOpen
-    println!("📋 Nom de l'application: '{}'", app.name()?);
+    println!("📋 Nom de l'application: '{}'", app.get_name()?);
     println!("🔓 Base ouverte: {}", app.is_open()?);
     
     // SYNTAX MAGIQUE! Équivalent C#/VB : app.Loggable.UserName
@@ -41,7 +41,7 @@ fn elegant_rust_approach() -> SageResult<()> {
     println!("✅ Objet Loggable obtenu");
     
     // Équivalent C#/VB : app.Loggable.UserName
-    let username = loggable.user_name()?;
+    let username = loggable.get_user_name()?;
     println!("👤 Nom d'utilisateur: '{}'", username);
     
     // Équivalent C#/VB : app.Loggable.IsLogged
@@ -62,7 +62,7 @@ fn elegant_rust_approach() -> SageResult<()> {
     // SYNTAXE ULTRA-CONDENSÉE! Une ligne équivalente à C#/VB
     let user_summary = format!(
         "Utilisateur '{}' {} (Admin: {})",
-        app.loggable()?.user_name()?,
+        app.loggable()?.get_user_name()?,
         if app.loggable()?.is_logged()? { "connecté" } else { "déconnecté" },
         app.loggable()?.is_administrator()?
     );
@@ -85,7 +85,7 @@ fn syntax_examples() -> SageResult<()> {
     
     // Style fonctionnel avec gestion d'erreur
     let username = app.loggable()
-        .and_then(|l| l.user_name())
+        .and_then(|l| l.get_user_name())
         .unwrap_or_else(|_| "Utilisateur inconnu".to_string());
     
     // Style impératif
@@ -99,7 +99,7 @@ fn syntax_examples() -> SageResult<()> {
     // Pattern matching pour gestion d'erreur fine
     match app.loggable() {
         Ok(loggable) => {
-            match loggable.user_name() {
+            match loggable.get_user_name() {
                 Ok(name) => println!("Utilisateur: {}", name),
                 Err(e) => println!("Erreur nom utilisateur: {}", e),
             }

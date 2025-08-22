@@ -27,7 +27,7 @@ impl CptaLoggable {
     }
 
     /// Obtient le nom d'utilisateur connecté - ÉQUIVALENT .UserName
-    pub fn user_name(&self) -> SageResult<String> {
+    pub fn get_user_name(&self) -> SageResult<String> {
         self.dispatch().call_method_by_name("UserName", &[])?
             .to_string()
     }
@@ -73,7 +73,7 @@ impl CptaLoggable {
     pub fn user_info(&self) -> SageResult<String> {
         let is_logged = self.is_logged().unwrap_or(false);
         let is_admin = self.is_administrator().unwrap_or(false);
-        let username = self.user_name().unwrap_or_else(|_| "Non disponible".to_string());
+        let username = self.get_user_name().unwrap_or_else(|_| "Non disponible".to_string());
         
         // ServiceName peut ne pas exister, donc on ne l'utilise pas dans le résumé par défaut
         Ok(format!(

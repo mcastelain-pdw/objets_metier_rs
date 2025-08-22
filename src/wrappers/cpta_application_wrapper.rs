@@ -35,7 +35,7 @@ impl CptaApplication {
     }
 
     /// Obtient le nom de l'application
-    pub fn name(&self) -> SageResult<String> {
+    pub fn get_name(&self) -> SageResult<String> {
         self.dispatch()?.call_method_by_name("Name", &[])?
             .to_string()
     }
@@ -82,6 +82,11 @@ impl CptaApplication {
     pub fn create(&self) -> SageResult<()> {
         self.dispatch()?.call_method_by_name("Create", &[])?;
         Ok(())
+    }
+
+    /// Accède à l'objet FactoryJournal - ÉQUIVALENT .FactoryJournal en C#/VB
+    pub fn factory_journal(&self) -> SageResult<SafeVariant> {
+        self.dispatch()?.call_method_by_name("FactoryJournal", &[])
     }
 
     /// Obtient les informations sur la base de données

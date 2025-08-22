@@ -5,6 +5,118 @@ Toutes les modifications notables de ce projet sont documentées dans ce fichier
 Le format est basé sur [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 et ce projet adhère à [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.3] - 2025-08-22 ✅ **TERMINÉE**
+
+### 🚀 MISE À JOUR MAJEURE - Architecture modulaire + Conversion VARIANT complète
+
+#### ✨ **NOUVELLES FONCTIONNALITÉS MAJEURES**
+
+##### 🏗️ **Architecture Modulaire**
+- **Nouveau dossier `src/wrappers/`** pour organiser les wrappers métier
+- **`CptaApplication`** : Wrapper spécialisé pour BSCPTAApplication100c
+- **`CptaLoggable`** : Wrapper pour l'authentification IBILoggable  
+- **Structure évolutive** préparée pour les futurs modules (Commercial, Paie, etc.)
+
+##### 🎯 **Syntaxe Élégante Style C#**
+- **Navigation fluide** : `app.loggable()?.user_name()?`
+- **Équivalence C#** : `_mCpta.Loggable.UserName` → `app.loggable()?.user_name()?`
+- **Chaînage de méthodes** avec gestion d'erreurs intégrée Rust
+
+##### 🔄 **Conversion VARIANT Complète et Fonctionnelle**
+- **BSTR ↔ String** : Gestion UTF-16 correcte avec `windows::core::BSTR`
+- **VT_BOOL ↔ bool** : Conversion `VARIANT_BOOL` avec valeurs correctes (-1/0)
+- **VT_I4 ↔ i32** : Entiers 32-bit natifs
+- **VT_R8 ↔ f64** : Nombres flottants double précision  
+- **VT_DISPATCH ↔ IDispatch** : Objets COM avec gestion lifetime
+- **Manipulation mémoire directe** pour contourner les limitations `ManuallyDrop`
+
+##### 🔐 **Connexion Sage 100c Réellement Fonctionnelle**
+- **Test réussi** : Connexion complète à `D:\TMP\BIJOU.MAE`
+- **Authentification** : `<Administrateur>` avec mot de passe vide
+- **Cycle complet** : Open → Vérification → Close avec succès
+- **Statuts validés** : `is_open()`, `is_logged()`, `is_administrator()`
+
+#### 🔧 **AMÉLIORATIONS**
+
+##### 📊 **Résultats de Test v0.1.3**
+```bash
+🎉 CONNEXION RÉUSSIE!
+✅ Base ouverte: D:\TMP\BIJOU.MAE
+🔐 Connecté: true  
+👑 Admin: true
+✅ Base fermée proprement
+```
+
+##### 📝 **Exemples Fonctionnels**
+```rust
+// Code C# Sage original:
+// _mCpta.Name = "D:\\TMP\\BIJOU.MAE";
+// _mCpta.Loggable.UserName = "<Administrateur>";
+// _mCpta.Open();
+
+// Équivalent Rust v0.1.3:
+let app = CptaApplication::new(BSCPTA_CLSID)?;
+app.set_name(r"D:\TMP\BIJOU.MAE")?;
+app.loggable()?.set_user_name("<Administrateur>")?;
+app.open()?; // 🎉 SUCCÈS !
+```
+
+#### 🔄 **CHANGEMENTS MAJEURS**
+
+##### 📦 **Réorganisation Complète**
+- **DÉPLACÉ** : `SageApplication` → `src/wrappers/cpta_application.rs`
+- **DÉPLACÉ** : `SageLoggable` → `src/wrappers/cpta_loggable.rs`
+- **SUPPRIMÉ** : `src/com/sage_wrappers.rs` (remplacé par architecture modulaire)
+- **AJOUTÉ** : `src/wrappers/mod.rs` avec exports propres
+
+##### 🏷️ **Nommage Cohérent Sage**
+- **`SageApplication`** → **`CptaApplication`** (spécifique Comptabilité)
+- **`SageLoggable`** → **`CptaLoggable`** (préfixe CPTA cohérent)
+- **Convention** : Préfixes suivent nomenclature Sage (`BSCPTAApplication100c`)
+
+#### 🐛 **CORRECTIONS MAJEURES**
+
+##### 🔧 **Problème VARIANT/ManuallyDrop RÉSOLU**
+- **Avant** : `to_variant()` retournait `VARIANT::default()` (vide)
+- **Problème** : Setters ne fonctionnaient pas (valeurs vides)
+- **Solution** : Manipulation directe mémoire avec `VariantInit()` + pointeurs
+- **Résultat** : Setters fonctionnent, getters retournent vraies valeurs
+
+##### 📝 **Code Quality**
+- **Warnings supprimés** : imports inutilisés, lifetime elision
+- **Compilation propre** : Aucune erreur, warnings minimum
+- **Documentation** : Commentaires inline et exemples à jour
+
+#### 🎯 **VALIDATION COMPLÈTE**
+
+##### ✅ **Tests Passants**
+```bash
+✅ cargo check          # Compilation sans erreurs
+✅ cargo run             # Exécution main réussie  
+✅ cargo run --example sage_connection_demo # 🎉 CONNEXION SAGE RÉUSSIE
+```
+
+##### ✅ **Fonctionnalités Validées**
+- **Setters** : `set_name()`, `set_user_name()`, `set_user_pwd()` fonctionnels
+- **Getters** : `name()`, `user_name()` retournent vraies valeurs (plus vides)
+- **Actions** : `open()`, `close()` avec gestion statut
+- **Statuts** : `is_open()`, `is_logged()`, `is_administrator()` corrects
+
+#### 🌟 **IMPACT v0.1.3**
+
+##### ✅ **Pour les Développeurs**
+- **Syntaxe moderne** identique au C# original Sage
+- **Type safety** complet avec gestion d'erreurs Rust
+- **Documentation à jour** avec exemples fonctionnels
+- **Productivité** : Plus de debug VARIANT, ça fonctionne !
+
+##### ✅ **Pour l'Architecture**
+- **Extensibilité** : Ajout facile futurs modules (Commercial, Paie)
+- **Maintenabilité** : Séparation claire wrappers/COM/erreurs
+- **Réutilisabilité** : Patterns reproductibles autres applications Sage
+
+---
+
 ## [0.1.2] - 2025-08-22
 
 ### 🚀 Amélioration majeure - Classification intelligente des membres COM

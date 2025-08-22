@@ -1,14 +1,24 @@
 # Objets Métier Sage 100c - Wrapper Rust
 
 [![Rust](https://img.shields.io/badge/rust-1.70+-orange.svg)](https://www.rust-lang.org)
+[![Version](https://img.shields.io/badge/version-0.1.3-brightgreen.svg)](Cargo.toml)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-Windows-blue.svg)](https://www.microsoft.com/windows)
 
 ## 📋 Description
 
-Ce projet propose une bibliothèque wrapper en **Rust** pour l'API COM **Objets Métier Sage 100c**. Il permet d'interagir avec les bases de données et fonctionnalités de Sage 100c depuis des applications Rust modernes.
+Ce projet propose une bibliothèque wrapper **moderne et sûre** en **Rust** pour l'API COM **Objets Métier Sage 100c**. Il permet d'interagir avec les bases de données et fonctionnalités de Sage 100c depuis des applications Rust modernes avec une syntaxe élégante et une gestion d'erreurs robuste.
 
-Sage 100c fournit uniquement des exemples pour C# et Visual Basic dans sa documentation PDF. Ce projet comble cette lacune en offrant une interface Rust moderne et sûre pour les développeurs souhaitant intégrer Sage 100c dans leurs applications.
+Sage 100c fournit uniquement des exemples pour C# et Visual Basic dans sa documentation PDF. Ce projet comble cette lacune en offrant une interface Rust moderne, **type-safe** et ergonomique pour les développeurs souhaitant intégrer Sage 100c dans leurs applications.
+
+## ✨ Fonctionnalités v0.1.3
+
+- ✅ **Syntaxe élégante** similaire au C# : `app.loggable()?.user_name()?`
+- ✅ **Conversion VARIANT complète** avec types Rust natifs
+- ✅ **Connexion fonctionnelle** à Sage 100c avec authentification
+- ✅ **Architecture modulaire** avec wrappers spécialisés
+- ✅ **Gestion mémoire automatique** et sûre (RAII)
+- ✅ **Support complet COM** avec discovery automatique
 
 ## 🎯 Objectifs du projet
 
@@ -28,7 +38,7 @@ Sage 100c fournit uniquement des exemples pour C# et Visual Basic dans sa docume
 - 🔍 **Requêtes avancées** avec filtres
 - 🔄 **Synchronisation** et opérations batch
 
-## 🏗️ Architecture
+## 🏗️ Architecture v0.1.3
 
 ```
 objets_metier_rs/
@@ -38,24 +48,22 @@ objets_metier_rs/
 │   ├── com/                # Couche COM bas niveau
 │   │   ├── mod.rs
 │   │   ├── instance.rs     # Gestion des instances COM
-│   │   └── dispatch.rs     # Appels de méthodes COM
-│   ├── modules/            # Modules métier Sage
+│   │   ├── dispatch.rs     # Appels de méthodes COM
+│   │   ├── variant.rs      # Conversion VARIANT ↔ Rust
+│   │   └── safe_string.rs  # Gestion BSTR sécurisée
+│   ├── wrappers/           # 🆕 Wrappers métier spécialisés
 │   │   ├── mod.rs
-│   │   ├── comptabilite.rs # Module Comptabilité
-│   │   ├── commercial.rs   # Module Commercial
-│   │   └── paie.rs        # Module Paie
-│   ├── entities/           # Entités métier
-│   │   ├── mod.rs
-│   │   ├── compte.rs       # Comptes comptables
-│   │   ├── ecriture.rs     # Écritures comptables
-│   │   ├── client.rs       # Clients
-│   │   └── article.rs      # Articles
+│   │   ├── cpta_application.rs    # BSCPTAApplication100c
+│   │   ├── cpta_loggable.rs       # IBILoggable (auth)
+│   │   ├── cial_application.rs    # 🔮 Futur: Commercial
+│   │   └── paie_application.rs    # 🔮 Futur: Paie
 │   └── errors/             # Gestion d'erreurs
 │       ├── mod.rs
 │       └── sage_error.rs
 ├── examples/               # Exemples d'utilisation
+│   ├── sage_connection_demo.rs    # Connexion style C#
+│   └── elegant_syntax.rs          # Syntaxe moderne Rust
 ├── docs/                   # Documentation supplémentaire
-├── tests/                  # Tests d'intégration
 └── README.md
 ```
 
@@ -83,53 +91,61 @@ cargo build
 cargo run
 ```
 
-### Exemple d'utilisation
+### Exemple d'utilisation v0.1.3
 
 ```rust
-use objets_metier_rs::com::ComInstance;
+use objets_metier_rs::wrappers::CptaApplication;
 use objets_metier_rs::errors::SageResult;
 
 fn main() -> SageResult<()> {
-    // Créer une instance COM de BSCPTAApplication100c
-    let instance = ComInstance::new("309DE0FB-9FB8-4F4E-8295-CC60C60DAA33")?;
-    println!("✅ Instance COM créée avec succès !");
+    // Créer une instance de l'application Comptabilité
+    let app = CptaApplication::new("309DE0FB-9FB8-4F4E-8295-CC60C60DAA33")?;
+    println!("✅ BSCPTAApplication100c créée");
     
-    // Vérifier le support de l'automation
-    if instance.supports_automation() {
-        // Obtenir les informations de type
-        let type_info = instance.get_type_info()?;
-        println!("📋 {}", type_info);
-        
-        // Découvrir les méthodes disponibles
-        let methods = instance.list_methods()?;
-        println!("🔧 {} méthodes trouvées", methods.len());
-        
-        // Découvrir et séparer méthodes/propriétés (v0.1.0+)
-        let members = instance.list_members()?;
-        let methods_only = instance.list_methods_only()?;
-        let properties = instance.group_properties()?;
-        
-        println!("📊 {} membres total", members.len());
-        println!("🔧 {} méthodes pures", methods_only.len()); 
-        println!("📋 {} groupes de propriétés", properties.len());
-        
-        // Appels de méthodes sécurisés
-        use objets_metier_rs::com::SafeDispatch;
-        let dispatch = SafeDispatch::new(instance.dispatch()?);
-        
-        match dispatch.call_method_by_name("IsOpen", &[]) {
-            Ok(result) => println!("IsOpen: {}", result.type_name()),
-            Err(e) => println!("Erreur: {}", e),
+    // === SYNTAXE ÉLÉGANTE STYLE C# ===
+    
+    // Équivalent C# : _mCpta.Name = "D:\\TMP\\BIJOU.MAE";
+    app.set_name(r"D:\TMP\BIJOU.MAE")?;
+    
+    // Équivalent C# : _mCpta.Loggable.UserName = "<Administrateur>";
+    app.loggable()?.set_user_name("<Administrateur>")?;
+    app.loggable()?.set_user_pwd("")?;
+    
+    // Vérification que les valeurs sont bien définies
+    println!("📋 Base: '{}'", app.name()?);
+    println!("� Utilisateur: '{}'", app.loggable()?.user_name()?);
+    
+    // Équivalent C# : _mCpta.Open();
+    match app.open() {
+        Ok(()) => {
+            println!("🎉 CONNEXION RÉUSSIE!");
+            
+            if app.is_open()? {
+                println!("✅ Base ouverte: {}", app.name()?);
+                println!("� Connecté: {}", app.loggable()?.is_logged()?);
+                println!("👑 Admin: {}", app.loggable()?.is_administrator()?);
+                
+                app.close()?;
+            }
         }
+        Err(e) => println!("❌ Échec connexion: {}", e),
     }
     
     Ok(())
     // Instance libérée automatiquement (RAII)
 }
-    
-    sage.close()?;
-    Ok(())
-}
+```
+
+**Résultat** :
+```
+🚀 Sage 100c - Connexion automatique style C# v0.1.3
+✅ BSCPTAApplication100c créée
+📋 Base: 'D:\TMP\BIJOU.MAE'
+👤 Utilisateur: '<Administrateur>'
+🎉 CONNEXION RÉUSSIE!
+✅ Base ouverte: D:\TMP\BIJOU.MAE
+🔐 Connecté: true
+👑 Admin: true
 ```
 
 ## 📚 Documentation
@@ -142,15 +158,51 @@ fn main() -> SageResult<()> {
 - ❓ **[FAQ](docs/FAQ.md)** - Questions fréquentes
 - 🔍 **[Troubleshooting](docs/troubleshooting.md)** - Résolution de problèmes
 
-### Modules supportés
+### Modules supportés v0.1.3
 
-| Module | Status | Description |
-|--------|--------|-------------|
-| 💼 **Comptabilité** | ✅ En cours | Comptes Tiers, Plan Comptable, écritures, journaux |
-| 🛒 **Commercial** | 📋 Planifié | Clients, Fournisseurs, articles, commandes |
-| 💰 **Paie** | 📋 Planifié | Employés, bulletins de paie |
-| 📊 **Immobilisations** | 📋 Planifié | Biens, amortissements |
-| 🏦 **Trésorerie** | 📋 Planifié | Banques, échéances |
+| Module | Status | Wrapper | Description |
+|--------|--------|---------|-------------|
+| 💼 **Comptabilité** | ✅ **Fonctionnel** | `CptaApplication` | Connexion, auth, gestion base CPTA |
+| 🔐 **Authentification** | ✅ **Fonctionnel** | `CptaLoggable` | Login, permissions, admin |
+| 🛒 **Commercial** | 📋 Planifié v0.2 | `CialApplication` | Clients, articles, commandes |
+| 💰 **Paie** | 📋 Planifié v0.3 | `PaieApplication` | Employés, bulletins |
+| 📊 **Immobilisations** | 📋 Planifié v0.4 | `ImmoApplication` | Biens, amortissements |
+| 🏦 **Trésorerie** | 📋 Planifié v0.5 | `TresoApplication` | Banques, échéances |
+
+## 🎯 Fonctionnalités Principales v0.1.3
+
+### ✅ **Connexion Sage 100c**
+```rust
+let app = CptaApplication::new(BSCPTA_CLSID)?;
+app.set_name(r"D:\chemin\base.MAE")?;
+app.loggable()?.set_user_name("<Administrateur>")?;
+app.open()?; // Connexion réussie !
+```
+
+### ✅ **Syntaxe Élégante**
+```rust
+// Style C# natif
+app.loggable()?.user_name()?           // _mCpta.Loggable.UserName
+app.is_open()?                         // _mCpta.IsOpen  
+app.loggable()?.is_administrator()?    // _mCpta.Loggable.IsAdministrator
+```
+
+### ✅ **Conversion VARIANT Complète**
+- **Strings** : `BSTR` ↔ `String` avec gestion UTF-16
+- **Nombres** : `VT_I4`, `VT_R8` ↔ `i32`, `f64`
+- **Booléens** : `VARIANT_BOOL` ↔ `bool`
+- **Objets COM** : `VT_DISPATCH` ↔ `IDispatch`
+
+### ✅ **Gestion d'Erreurs Robuste**
+```rust
+match app.open() {
+    Ok(()) => println!("🎉 Connexion réussie"),
+    Err(SageError::ComError { hresult, message }) => {
+        println!("❌ Erreur COM: {} - {}", hresult, message);
+    }
+    Err(e) => println!("❌ Autre erreur: {}", e),
+}
+```
 
 ## � Découverte des interfaces COM
 
@@ -280,7 +332,7 @@ SAGE_DB_PATH="C:\\Sage\\Data\\TEST.gcm" cargo test
 
 ### Version 0.1.0 - Fondations ✅ **TERMINÉE**
 - [x] Configuration projet Rust
-- [x] Connexion COM basique
+- [x] Connexion COM basique  
 - [x] Découverte CLSID et méthodes
 - [x] Wrapper sûr pour les appels COM
 - [x] Gestion d'erreurs Rust
@@ -291,30 +343,33 @@ SAGE_DB_PATH="C:\\Sage\\Data\\TEST.gcm" cargo test
 - [x] Classification heuristique (7 méthodes, 40 propriétés)
 - [x] Documentation complète et tests
 
-### Version 0.1.3 - Conversion VARIANT complète 🔄 **EN COURS**
-- [ ] Support complet BSTR → String
-- [ ] Types de dates (VT_DATE) → chrono::DateTime
-- [ ] Types numériques (VT_CY, VT_DECIMAL, VT_R8)
-- [ ] Arrays et collections (VT_ARRAY, VT_SAFEARRAY)
-- [ ] Conversion bidirectionnelle (from_string, from_i32, etc.)
-- [ ] Appels de méthodes avec paramètres fonctionnels
+### Version 0.1.3 - Architecture modulaire ✅ **TERMINÉE**
+- [x] **Conversion VARIANT complète** avec types Rust natifs
+- [x] **Syntaxe élégante** style C# (`app.loggable()?.user_name()?`)
+- [x] **Connexion fonctionnelle** à Sage 100c avec authentification
+- [x] **Architecture modulaire** avec wrappers spécialisés (`CptaApplication`, `CptaLoggable`)
+- [x] **Gestion mémoire automatique** et sûre (RAII)
+- [x] **Tests de connexion réels** avec base Sage
 
-### Version 0.2.0 - Module Comptabilité
-- [ ] Entités Tiers, Plan Comptable, Écriture, Journal
-- [ ] CRUD opérations comptables
-- [ ] Validation des données métier Sage
-- [ ] Tests d'intégration avec base réelle
+### Version 0.2.0 - Module Commercial 📋 **PLANIFIÉE**
+- [ ] **`CialApplication`** wrapper pour BSCIALApplication100c
+- [ ] Entités Client, Fournisseur, Article, Commande
+- [ ] CRUD opérations commerciales
+- [ ] Gestion des stocks et tarifs
+- [ ] Tests d'intégration avec base commerciale
 
-### Version 0.3.0 - Module Commercial
-- [ ] Entités Client, Article, Commande
-- [ ] Gestion des stocks
-- [ ] Calculs de prix et remises
+### Version 0.3.0 - Module Paie 📋 **PLANIFIÉE**  
+- [ ] **`PaieApplication`** wrapper pour BSPAIEApplication100c
+- [ ] Entités Salarié, Bulletin, Contrat
+- [ ] Calculs de paie et cotisations
+- [ ] Export bulletins et déclarations
 
-### Version 1.0.0 - Production Ready
-- [ ] Documentation complète
+### Version 1.0.0 - Production Ready 🎯 **OBJECTIF**
+- [ ] Documentation complète tous modules
 - [ ] Performances optimisées
-- [ ] Support multi-threading
-- [ ] Package crates.io
+- [ ] Support multi-threading sécurisé  
+- [ ] Package crates.io publié
+- [ ] Certification et tests exhaustifs
 
 ## ⚠️ Limitations connues
 

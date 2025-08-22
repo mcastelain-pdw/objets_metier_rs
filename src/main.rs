@@ -40,7 +40,7 @@ fn display_methods_and_properties(instance: &ComInstance) -> SageResult<()> {
     match instance.list_methods_only() {
         Ok(methods) => {
             println!("\n🔧 MÉTHODES disponibles ({} trouvées):", methods.len());
-            for method in methods.iter().take(15) {
+            for method in methods.iter() {
                 let params = method.param_count.map_or_else(
                     || "?".to_string(),
                     |count| count.to_string()
@@ -48,9 +48,6 @@ fn display_methods_and_properties(instance: &ComInstance) -> SageResult<()> {
                 let return_type = method.return_type.as_deref().unwrap_or("?");
                 println!("   [{}] {}({} params) -> {}", 
                     method.id, method.name, params, return_type);
-            }
-            if methods.len() > 15 {
-                println!("   ... et {} autres méthodes", methods.len() - 15);
             }
         }
         Err(e) => println!("⚠️  Impossible de lister les méthodes: {}", e),
@@ -60,7 +57,7 @@ fn display_methods_and_properties(instance: &ComInstance) -> SageResult<()> {
     match instance.group_properties() {
         Ok(properties) => {
             println!("\n📋 PROPRIÉTÉS disponibles ({} trouvées):", properties.len());
-            for (name, variants) in properties.iter().take(15) {
+            for (name, variants) in properties.iter() {
                 let types: Vec<String> = variants.iter().map(|v| {
                     match v.member_type {
                         MemberType::PropertyGet => "get".to_string(),
@@ -78,9 +75,6 @@ fn display_methods_and_properties(instance: &ComInstance) -> SageResult<()> {
                 
                 println!("   [{}] {} [{}] -> {}", 
                     id, name, types.join("/"), return_type);
-            }
-            if properties.len() > 15 {
-                println!("   ... et {} autres propriétés", properties.len() - 15);
             }
         }
         Err(e) => println!("⚠️  Impossible de lister les propriétés: {}", e),

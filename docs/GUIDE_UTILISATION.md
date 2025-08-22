@@ -219,12 +219,18 @@ cargo test test_member_classification
 - ✅ 40+ propriétés Factory découvertes
 - ✅ API SafeDispatch pour appels sécurisés
 
-### v0.2.0 (Prochaine) 🔄
-- 🔄 Conversion complète VARIANT (BSTR, dates, etc.)
-- 🔄 Wrappers métier (Tiers, Client, Fournisseur, CompteG)
-- 🔄 Méthodes Open() avec paramètres
-- 🔄 Support Commercial (IBSCialApplication3)
-- 🔄 CRUD complet (Create, Read, Update, Delete)
+### v0.1.3 (Prochaine - Priorité) 🔄
+- 🔄 **Conversion VARIANT complète** (BSTR, VT_DATE, VT_CY, etc.)
+- 🔄 **SafeVariant::to_string() fonctionnel** pour tous les types
+- 🔄 **Paramètres de méthodes** : from_string(), from_i32(), from_bool()
+- 🔄 **Arrays et collections** : Support VT_ARRAY, VT_SAFEARRAY
+- 🔄 **Appels avec paramètres** : Open() fonctionnel avec chemin de base
+
+### v0.2.0 (Future) 📋
+- � Wrappers métier (Tiers, Client, Fournisseur, CompteG)
+- � CRUD complet (Create, Read, Update, Delete)
+- � Support Commercial (IBSCialApplication3)
+- � Validation des données métier Sage
 
 ### v0.3.0 (Future) 📋
 - 📋 Entités métier complètes (Écriture, Journal, Article)
@@ -306,18 +312,58 @@ for method in methods {
 // Utilisez les noms exacts découverts
 ```
 
-### ❌ Conversion VARIANT échoue
+### ❌ Conversion VARIANT échoue (v0.1.2)
 
 ```rust
-// v0.1.x : Types supportés limités
+// v0.1.2 : Types supportés limités - SERA CORRIGÉ dans v0.1.3
 match dispatch.call_method_by_name("IsOpen", &[]) {
     Ok(result) => {
-        println!("Type reçu: {}", result.type_name());
-        // Si BStr : "Conversion VARIANT non implémentée (BStr)"
-        // Solution : Attendez v0.2.0 ou contribuez à l'implémentation
+        println!("Type reçu: {}", result.type_name()); // "BStr"
+        // result.to_string() → "Conversion VARIANT non implémentée (BStr)"
+        
+        // ⚠️ WORKAROUND temporaire v0.1.2 : utiliser type_name()
+        match result.type_name() {
+            "BStr" => println!("Valeur BSTR reçue (conversion en v0.1.3)"),
+            "Bool" => println!("Valeur booléenne reçue"),
+            _ => println!("Type: {}", result.type_name()),
+        }
     },
     Err(e) => println!("Erreur: {}", e),
 }
+
+// 🎯 v0.1.3 OBJECTIF : Conversion complète
+// let name = dispatch.call_method_by_name("Name", &[])?.to_string()?;
+// let is_open = dispatch.call_method_by_name("IsOpen", &[])?.to_bool()?;
+// let params = vec![SafeVariant::from_string("C:\\Data\\BIJOU.gcm")];
+// dispatch.call_method_by_name("Open", &params)?;
+```
+
+### 🎯 Priorité v0.1.3 : Pourquoi d'abord la conversion VARIANT ?
+
+La conversion VARIANT complète est **cruciale** avant les wrappers métier car :
+
+1. **Fondation nécessaire** : Tous les appels COM retournent des VARIANT
+2. **Paramètres de méthodes** : Open(), Create() ont besoin de paramètres convertis  
+3. **Valeurs de retour** : Name, IsOpen doivent retourner des types Rust
+4. **Appels fonctionnels** : Actuellement limités aux méthodes sans paramètres
+5. **Base pour v0.2.0** : Les wrappers métier dépendent des conversions
+
+```rust
+// v0.1.2 : Limité
+let result = dispatch.call_method_by_name("IsOpen", &[])?;
+// result.to_string() → Erreur
+
+// v0.1.3 : Complet  
+let is_open: bool = dispatch.call_method_by_name("IsOpen", &[])?.to_bool()?;
+let name: String = dispatch.call_method_by_name("Name", &[])?.to_string()?;
+
+// Avec paramètres
+let db_path = SafeVariant::from_string("C:\\Data\\BIJOU.gcm");
+dispatch.call_method_by_name("Open", &[db_path])?;
+
+// Base solide pour v0.2.0 wrappers métier
+let factory_tiers = dispatch.call_method_by_name("FactoryTiers", &[])?.to_dispatch()?;
+let tiers = TiersWrapper::new(factory_tiers); // v0.2.0
 ```
 
 ## 📚 Ressources et aide

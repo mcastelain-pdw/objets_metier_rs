@@ -32,7 +32,10 @@ impl<'a> SafeDispatch<'a> {
             let mut arg_err: u32 = 0;
 
             // Convertir les paramètres SafeVariant en VARIANT
-            let variant_params: Vec<VARIANT> = params.iter().map(|p| p.to_variant()).collect();
+            let mut variant_params = Vec::new();
+            for param in params {
+                variant_params.push(param.to_variant()?);
+            }
 
             let dispparams = DISPPARAMS {
                 rgvarg: if variant_params.is_empty() {
@@ -57,7 +60,7 @@ impl<'a> SafeDispatch<'a> {
             );
 
             match hr {
-                Ok(_) => Ok(SafeVariant::from_variant(result)),
+                Ok(_) => SafeVariant::from_variant(result),
                 Err(e) => {
                     // Vérifier si on a des informations d'exception
                     let error_msg = if !excep_info.bstrDescription.is_empty() {
@@ -99,7 +102,7 @@ impl<'a> SafeDispatch<'a> {
             );
 
             match hr {
-                Ok(_) => Ok(SafeVariant::from_variant(result)),
+                Ok(_) => SafeVariant::from_variant(result),
                 Err(e) => {
                     let error_msg = if !excep_info.bstrDescription.is_empty() {
                         excep_info.bstrDescription.to_string()
@@ -129,7 +132,7 @@ impl<'a> SafeDispatch<'a> {
             let mut excep_info = EXCEPINFO::default();
             let mut arg_err: u32 = 0;
 
-            let variant_value = value.to_variant();
+            let variant_value = value.to_variant()?;
             let named_arg_id = DISPID_PROPERTYPUT;
 
             let dispparams = DISPPARAMS {

@@ -285,11 +285,25 @@ SAGE_DB_PATH="C:\\Sage\\Data\\TEST.gcm" cargo test
 - [x] Wrapper sûr pour les appels COM
 - [x] Gestion d'erreurs Rust
 
+### Version 0.1.2 - Classification intelligente ✅ **TERMINÉE**
+- [x] Distinction automatique méthodes vs propriétés
+- [x] Reconnaissance patterns Sage (Factory*, Is*, etc.)
+- [x] Classification heuristique (7 méthodes, 40 propriétés)
+- [x] Documentation complète et tests
+
+### Version 0.1.3 - Conversion VARIANT complète 🔄 **EN COURS**
+- [ ] Support complet BSTR → String
+- [ ] Types de dates (VT_DATE) → chrono::DateTime
+- [ ] Types numériques (VT_CY, VT_DECIMAL, VT_R8)
+- [ ] Arrays et collections (VT_ARRAY, VT_SAFEARRAY)
+- [ ] Conversion bidirectionnelle (from_string, from_i32, etc.)
+- [ ] Appels de méthodes avec paramètres fonctionnels
+
 ### Version 0.2.0 - Module Comptabilité
 - [ ] Entités Tiers, Plan Comptable, Écriture, Journal
 - [ ] CRUD opérations comptables
-- [ ] Validation des données
-- [ ] Tests d'intégration
+- [ ] Validation des données métier Sage
+- [ ] Tests d'intégration avec base réelle
 
 ### Version 0.3.0 - Module Commercial
 - [ ] Entités Client, Article, Commande

@@ -51,7 +51,50 @@ Name            → PropertyGet (String)     // Avant: Method
 - **Performance optimale** : Classification en O(n) linéaire
 - **Extensibilité** : Patterns facilement ajustables
 
-## [0.1.1] - 2025-08-22
+## [0.1.3] - À venir
+
+### 🎯 Objectif : Conversion VARIANT complète
+
+#### ✨ Planifié
+- **Conversion BSTR complète** : SafeVariant::to_string() fonctionnel
+- **Support types de dates** : VT_DATE vers chrono::DateTime
+- **Types numériques avancés** : VT_CY (Currency), VT_DECIMAL, VT_R8
+- **Arrays et collections** : VT_ARRAY, VT_SAFEARRAY
+- **Types COM complexes** : VT_DISPATCH, VT_UNKNOWN
+- **Conversion bidirectionnelle** : from_string(), from_i32(), from_bool(), etc.
+
+#### 🔧 Améliorer
+- **SafeVariant enum** : Tous les types VARIANT supportés
+- **Conversion automatique** : Détection intelligente du type
+- **Gestion d'erreurs** : Messages d'erreur spécifiques par type
+- **Performance** : Conversions optimisées sans allocation inutile
+
+#### 📊 Objectifs de test
+- ✅ **BSTR → String** : "Conversion VARIANT non implémentée" → valeur réelle
+- ✅ **Appels fonctionnels** : IsOpen() retourne true/false, Name retourne string
+- ✅ **Types numériques** : Conversion des montants, quantités, dates
+- ✅ **Arrays** : Support des collections Sage (listes d'objets)
+
+#### 💡 Impact attendu
+```rust
+// Avant v0.1.3
+let result = dispatch.call_method_by_name("Name", &[])?;
+println!("Type: {}", result.type_name()); // "BStr"  
+// result.to_string() → Erreur "Conversion VARIANT non implémentée"
+
+// Après v0.1.3
+let result = dispatch.call_method_by_name("Name", &[])?;
+println!("Nom: {}", result.to_string()?); // "BIJOU" (nom réel de la base)
+
+let is_open = dispatch.call_method_by_name("IsOpen", &[])?;
+println!("Ouverte: {}", is_open.to_bool()?); // true/false
+
+// Création de paramètres
+let params = vec![SafeVariant::from_string("C:\\Data\\BIJOU.gcm")];
+dispatch.call_method_by_name("Open", &params)?; // Fonctionnel !
+```
+
+## [0.1.2] - 2025-08-22
 
 ### ✨ Ajouté
 - **Découverte avancée des membres COM** : 
@@ -136,13 +179,19 @@ let result = dispatch.call_method(1, "IsOpen")?;
 println!("Base ouverte: {}", result.to_string()?);
 ```
 
-### 🎯 Prochaines étapes (v0.2.0)
-- Implémentation complète de la conversion VARIANT
-- Module Comptabilité avec Tiers, Plan Comptable, Écriture, Journal
-- Méthodes métier pour Open() avec paramètres
-- Support complet des opérations CRUD
-- Validation des données
-- Tests d'intégration
+### 🎯 Prochaines étapes (v0.1.3)
+- Conversion complète VARIANT → Rust (BSTR, VT_DATE, VT_CY, VT_DECIMAL, etc.)
+- SafeVariant::to_string() fonctionnel pour tous les types
+- SafeVariant::from_*() pour création depuis Rust
+- Gestion des arrays et types complexes (VT_ARRAY, VT_SAFEARRAY)
+- Tests de conversion exhaustifs
+
+### 🎯 Puis v0.2.0
+- Module Comptabilité avec wrappers métier (Tiers, Plan Comptable, Écriture, Journal)
+- Méthodes Open() avec paramètres fonctionnelles
+- Support complet des opérations CRUD sur les objets métier
+- Validation des données métier Sage
+- Tests d'intégration avec base de données réelle
 
 ---
 

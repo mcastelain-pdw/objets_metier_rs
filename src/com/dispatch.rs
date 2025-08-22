@@ -219,11 +219,27 @@ impl<'a> SafeDispatch<'a> {
     }
 
     /// Définit une propriété par son nom
-    #[allow(dead_code)] // Sera utilisé dans v0.2.0
     pub fn set_property_by_name(&self, property_name: &str, value: SafeVariant) -> SageResult<()> {
         let property_id = self.get_method_id(property_name)?;
         self.set_property(property_id, property_name, value)
     }
+
+    /// Alias pour set_property_by_name - ÉQUIVALENT COM PROPPUT
+    pub fn call_property_put(&self, property_name: &str, params: &[SafeVariant]) -> SageResult<()> {
+        if params.len() != 1 {
+            return Err(SageError::MethodCallError {
+                method_name: property_name.to_string(),
+                method_id: -1,
+                message: format!("PROPPUT nécessite exactement 1 paramètre, {} fourni", params.len()),
+            });
+        }
+        self.set_property_by_name(property_name, params[0].clone())
+    }
+}
+
+/// Trait pour créer des wrappers typés à partir d'IDispatch
+pub trait FromDispatch: Sized {
+    fn from_dispatch(dispatch: IDispatch) -> SageResult<Self>;
 }
 
 #[cfg(test)]

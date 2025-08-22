@@ -1,6 +1,5 @@
 use crate::errors::{SageError, SageResult};
-use windows::{Win32::System::Variant::*, Win32::Foundation::{VARIANT_BOOL, VARIANT_TRUE, VARIANT_FALSE}, core::*};
-use std::mem::ManuallyDrop;
+use windows::{core::*, Win32::{System::{Com::IDispatch, Variant::*}}};
 
 /// Wrapper sûr pour les VARIANT COM
 #[derive(Debug, Clone)]
@@ -23,15 +22,14 @@ pub enum SafeVariant {
     UI4(u32),
     I8(i64),
     UI8(u64),
+    Dispatch(IDispatch), // NOUVEAU: pour stocker les objets COM
+    Unknown(String),     // NOUVEAU: pour les types non reconnus
 }
 
 impl SafeVariant {
     /// Crée un SafeVariant à partir d'un VARIANT Windows - PRAGMATIQUE v0.1.3
     pub fn from_variant(variant: VARIANT) -> SageResult<Self> {
         unsafe {
-            // Pour v0.1.3, on accepte que certains types soient convertis en string
-            // TODO v0.1.4: Améliorer avec accès direct aux champs VARIANT
-            
             // Obtenir le type de variant
             let vt = variant.Anonymous.Anonymous.vt;
             
@@ -75,48 +73,121 @@ impl SafeVariant {
                     Ok(SafeVariant::R8(val))
                 },
                 
+                VT_DISPATCH => {
+                    // Gérer les objets COM IDispatch - CORRIGÉ
+                    let dispatch_opt = &variant.Anonymous.Anonymous.Anonymous.pdispVal;
+                    if let Some(dispatch) = dispatch_opt.as_ref() {
+                        Ok(SafeVariant::Dispatch(dispatch.clone()))
+                    } else {
+                        Ok(SafeVariant::Unknown("IDispatch null".to_string()))
+                    }
+                },
+                
+                VT_UNKNOWN => {
+                    // Gérer les objets COM IUnknown
+                    Ok(SafeVariant::Unknown(format!("IUnknown object (VT_{})", vt.0)))
+                },
+                
                 _ => {
                     // Pour les types non supportés, retourner une description
-                    Ok(SafeVariant::BStr(format!("Type VARIANT VT_{} - Conversion en v0.1.4", vt.0)))
+                    Ok(SafeVariant::Unknown(format!("Type VARIANT VT_{} - Conversion en v0.1.4", vt.0)))
                 }
             }
         }
     }
 
-    /// Convertit vers un VARIANT Windows - VERSION CONSERVATRICE v0.1.3
+    /// Convertit vers un VARIANT Windows - VERSION FONCTIONNELLE v0.1.3+
     pub fn to_variant(&self) -> SageResult<VARIANT> {
-        // Pour v0.1.3, on implémente seulement les conversions de base
-        // Version complète avec unions ManuallyDrop dans v0.1.4
+        // Solution ultime: Utiliser VariantInit qui retourne directement une VARIANT
+        // puis utiliser la méthode brutale pour contourner ManuallyDrop
         
         match self {
             SafeVariant::Empty => {
-                Ok(VARIANT::default()) // Par défaut VT_EMPTY
+                unsafe { Ok(windows::Win32::System::Variant::VariantInit()) }
             },
             
-            SafeVariant::BStr(_s) => {
-                // TODO v0.1.4: Créer un VARIANT avec BSTR en utilisant ManuallyDrop
-                // Pour l'instant, on retourne un VARIANT par défaut
-                // L'important est que from_variant fonctionne pour les retours COM
-                let variant = VARIANT::default();
-                Ok(variant)
+            SafeVariant::BStr(s) => {
+                let bstr = BSTR::from(s.as_str());
+                
+                unsafe {
+                    let mut variant = windows::Win32::System::Variant::VariantInit();
+                    
+                    // Approche directe avec transmute pour contourner ManuallyDrop
+                    let variant_ptr = &mut variant as *mut VARIANT as *mut u8;
+                    
+                    // Offset vers vt field (généralement à l'offset 0)
+                    let vt_ptr = variant_ptr as *mut u16;
+                    *vt_ptr = VT_BSTR.0;
+                    
+                    // Offset vers le champ bstrVal (généralement après vt + wReserved fields)
+                    let bstr_ptr = variant_ptr.add(8) as *mut BSTR; // 8 = 2 (vt) + 2 (wReserved1) + 2 (wReserved2) + 2 (wReserved3)
+                    *bstr_ptr = bstr;
+                    
+                    Ok(variant)
+                }
             },
             
-            SafeVariant::Bool(_val) => {
-                // TODO v0.1.4: Implémenter avec VARIANT_BOOL
-                Ok(VARIANT::default())
+            SafeVariant::Bool(val) => {
+                unsafe {
+                    let mut variant = windows::Win32::System::Variant::VariantInit();
+                    
+                    let variant_ptr = &mut variant as *mut VARIANT as *mut u8;
+                    let vt_ptr = variant_ptr as *mut u16;
+                    *vt_ptr = VT_BOOL.0;
+                    
+                    let bool_ptr = variant_ptr.add(8) as *mut i16;
+                    *bool_ptr = if *val { -1 } else { 0 }; // VARIANT_BOOL convention
+                    
+                    Ok(variant)
+                }
             },
             
-            SafeVariant::I4(_val) => {
-                // TODO v0.1.4: Implémenter avec lVal
-                Ok(VARIANT::default())
+            SafeVariant::I4(val) => {
+                unsafe {
+                    let mut variant = windows::Win32::System::Variant::VariantInit();
+                    
+                    let variant_ptr = &mut variant as *mut VARIANT as *mut u8;
+                    let vt_ptr = variant_ptr as *mut u16;
+                    *vt_ptr = VT_I4.0;
+                    
+                    let i4_ptr = variant_ptr.add(8) as *mut i32;
+                    *i4_ptr = *val;
+                    
+                    Ok(variant)
+                }
             },
             
-            SafeVariant::R8(_val) => {
-                // TODO v0.1.4: Implémenter avec dblVal
-                Ok(VARIANT::default())
+            SafeVariant::R8(val) => {
+                unsafe {
+                    let mut variant = windows::Win32::System::Variant::VariantInit();
+                    
+                    let variant_ptr = &mut variant as *mut VARIANT as *mut u8;
+                    let vt_ptr = variant_ptr as *mut u16;
+                    *vt_ptr = VT_R8.0;
+                    
+                    let r8_ptr = variant_ptr.add(8) as *mut f64;
+                    *r8_ptr = *val;
+                    
+                    Ok(variant)
+                }
             },
             
-            // Conversions automatiques vers les types de base
+            SafeVariant::Dispatch(dispatch) => {
+                unsafe {
+                    let mut variant = windows::Win32::System::Variant::VariantInit();
+                    
+                    let variant_ptr = &mut variant as *mut VARIANT as *mut u8;
+                    let vt_ptr = variant_ptr as *mut u16;
+                    *vt_ptr = VT_DISPATCH.0;
+                    
+                    let dispatch_ptr = variant_ptr.add(8) as *mut Option<IDispatch>;
+                    *dispatch_ptr = Some(dispatch.clone());
+                    
+                    Ok(variant)
+                }
+            },
+            
+            // Conversions automatiques
             SafeVariant::I2(val) => {
                 SafeVariant::I4(*val as i32).to_variant()
             },
@@ -126,9 +197,9 @@ impl SafeVariant {
             },
             
             _ => {
-                // Pour les types complexes, on retourne un VARIANT vide pour l'instant
-                // TODO v0.1.4: Conversion complète
-                Ok(VARIANT::default())
+                // Pour les autres types, retourner VT_EMPTY
+                println!("VARIANT conversion: Type non implémenté: {:?}", self);
+                unsafe { Ok(windows::Win32::System::Variant::VariantInit()) }
             }
         }
     }
@@ -161,6 +232,8 @@ impl SafeVariant {
                     Ok(format!("DATE({})", days_since_epoch))
                 }
             },
+            SafeVariant::Dispatch(_) => Ok("IDispatch object".to_string()),
+            SafeVariant::Unknown(desc) => Ok(desc.clone()),
             SafeVariant::Empty => Ok(String::new()),
             SafeVariant::Null => Ok("NULL".to_string()),
             SafeVariant::Error(hr) => Ok(format!("ERROR(0x{:08X})", hr.0)),
@@ -321,6 +394,8 @@ impl SafeVariant {
             SafeVariant::UI4(_) => "UI4",
             SafeVariant::I8(_) => "I8",
             SafeVariant::UI8(_) => "UI8",
+            SafeVariant::Dispatch(_) => "IDispatch",
+            SafeVariant::Unknown(_) => "Unknown",
         }
     }
 
@@ -328,6 +403,35 @@ impl SafeVariant {
     #[allow(dead_code)] // Sera utilisé dans v0.2.0
     pub fn is_empty_or_null(&self) -> bool {
         matches!(self, SafeVariant::Empty | SafeVariant::Null)
+    }
+
+    /// Convertit le VARIANT en interface IDispatch si possible - CORRIGÉ v0.1.3
+    pub fn to_dispatch(&self) -> SageResult<IDispatch> {
+        match self {
+            SafeVariant::Dispatch(dispatch) => {
+                // Cloner l'interface pour éviter les problèmes de durée de vie
+                Ok(dispatch.clone())
+            },
+            SafeVariant::Unknown(desc) if desc.contains("IDispatch") => {
+                Err(SageError::ConversionError {
+                    from_type: "Unknown".to_string(),
+                    to_type: "IDispatch".to_string(),
+                    value: "IDispatch null détecté".to_string(),
+                })
+            },
+            _ => {
+                Err(SageError::ConversionError {
+                    from_type: self.type_name().to_string(),
+                    to_type: "IDispatch".to_string(),
+                    value: format!("Type {} ne peut pas être converti en IDispatch", self.type_name()),
+                })
+            }
+        }
+    }
+
+    /// Vérifie si le VARIANT contient une interface COM - CORRIGÉ v0.1.3
+    pub fn is_object(&self) -> bool {
+        matches!(self, SafeVariant::Dispatch(_) | SafeVariant::Unknown(_))
     }
 
     // === MÉTHODES DE CRÉATION v0.1.3 ===
@@ -372,6 +476,11 @@ impl SafeVariant {
     pub fn null() -> Self {
         SafeVariant::Null
     }
+
+    /// Crée un SafeVariant à partir d'un IDispatch
+    pub fn from_dispatch(dispatch: IDispatch) -> Self {
+        SafeVariant::Dispatch(dispatch)
+    }
 }
 
 // Implémentations pratiques pour créer des SafeVariant
@@ -405,6 +514,12 @@ impl From<bool> for SafeVariant {
     }
 }
 
+impl From<IDispatch> for SafeVariant {
+    fn from(dispatch: IDispatch) -> Self {
+        SafeVariant::Dispatch(dispatch)
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -426,5 +541,13 @@ mod tests {
     fn test_bool_conversion() {
         let variant = SafeVariant::from(true);
         assert_eq!(variant.to_bool().unwrap(), true);
+    }
+
+    #[test]
+    fn test_dispatch_object() {
+        // Ce test nécessiterait un vrai IDispatch, donc on teste juste le type
+        let variant = SafeVariant::Unknown("IDispatch object".to_string());
+        assert!(variant.is_object());
+        assert_eq!(variant.type_name(), "Unknown");
     }
 }

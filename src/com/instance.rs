@@ -384,6 +384,72 @@ impl ComInstance {
         };
         Some(type_name.to_string())
     }
+
+    /// Crée une nouvelle instance ComInstance à partir d'un IDispatch existant
+    pub fn from_dispatch(dispatch: IDispatch) -> Self {
+        // IDispatch hérite d'IUnknown, donc on peut faire un cast sûr
+        let unknown = dispatch.cast::<IUnknown>().unwrap_or_else(|_| {
+            // Si le cast échoue pour une raison quelconque, utiliser transmute
+            // C'est sûr car IDispatch hérite d'IUnknown
+            unsafe { std::mem::transmute_copy::<IDispatch, IUnknown>(&dispatch) }
+        });
+
+        ComInstance { 
+            unknown,
+            dispatch: Some(dispatch),
+            initialized_com: false, // N'a pas initialisé COM car l'objet existe déjà
+        }
+    }
+
+    /// Explore les propriétés d'un objet COM imbriqué - CORRIGÉ v0.1.3
+    pub fn explore_nested_object(dispatch: IDispatch) -> SageResult<()> {
+        let instance = Self::from_dispatch(dispatch);
+        
+        println!("🔍 Exploration de l'objet imbriqué...");
+        
+        // Essayer d'obtenir les informations de type
+        match instance.get_type_info() {
+            Ok(info) => println!("📋 {}", info),
+            Err(_) => println!("⚠️  Informations de type non disponibles pour l'objet imbriqué"),
+        }
+        
+        // Lister les méthodes et propriétés disponibles
+        match instance.list_methods_only() {
+            Ok(methods) => {
+                if !methods.is_empty() {
+                    println!("🔧 Méthodes disponibles ({}):", methods.len());
+                    for method in methods.iter().take(10) {
+                        println!("   - {}", method.name);
+                    }
+                    if methods.len() > 10 {
+                        println!("   ... et {} autres", methods.len() - 10);
+                    }
+                } else {
+                    println!("🔧 Aucune méthode détectée");
+                }
+            }
+            Err(_) => println!("⚠️  Impossible de lister les méthodes de l'objet imbriqué"),
+        }
+        
+        match instance.group_properties() {
+            Ok(properties) => {
+                if !properties.is_empty() {
+                    println!("📋 Propriétés disponibles ({}):", properties.len());
+                    for (name, _) in properties.iter().take(10) {
+                        println!("   - {}", name);
+                    }
+                    if properties.len() > 10 {
+                        println!("   ... et {} autres", properties.len() - 10);
+                    }
+                } else {
+                    println!("📋 Aucune propriété détectée");
+                }
+            }
+            Err(_) => println!("⚠️  Impossible de lister les propriétés de l'objet imbriqué"),
+        }
+        
+        Ok(())
+    }
 }
 
 impl Drop for ComInstance {

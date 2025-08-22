@@ -1,7 +1,9 @@
 mod com;
 mod errors;
+mod wrappers;
 
 use com::{ComInstance, SafeDispatch, SafeVariant, MemberType};
+use wrappers::CptaApplication;
 #[allow(unused_imports)] // Sera utilisé dans les futures versions  
 use com::MemberInfo;
 use errors::SageResult;
@@ -12,6 +14,65 @@ const BSCPTA_CLSID: &str = "309DE0FB-9FB8-4F4E-8295-CC60C60DAA33";
 const BSCIAL_CLSID: &str = "ED0EC116-16B8-44CC-A68A-41BF6E15EB3F";
 
 fn main() -> SageResult<()> {
+    println!("🚀 Sage 100c - Interface Rust v0.1.3");
+    println!("═══════════════════════════════════════");
+    
+    // DÉMO 1: Nouvelle syntaxe élégante (recommandée)
+    println!("\n✨ === NOUVELLE SYNTAXE RUST ÉLÉGANTE ===");
+    elegant_rust_demo()?;
+    
+    // DÉMO 2: Ancienne approche COM directe (pour comparaison)
+    println!("\n🔧 === APPROCHE COM DIRECTE (Comparaison) ===");
+    classic_com_demo()?;
+    
+    Ok(())
+}
+
+/// NOUVELLE APPROCHE: Syntaxe élégante à la Rust
+/// Équivalent C#/VB : app.Loggable.UserName
+/// Syntaxe Rust     : app.loggable()?.user_name()?
+fn elegant_rust_demo() -> SageResult<()> {
+    // Création avec la nouvelle API élégante
+    let app = CptaApplication::new(BSCPTA_CLSID)?;
+    println!("✅ Application Sage créée avec CptaApplication");
+    
+    // Propriétés de base - syntaxe simple
+    println!("📋 Nom: '{}'", app.name()?);
+    println!("🔓 Base ouverte: {}", app.is_open()?);
+    
+    // 🎯 MAGIE! Accès aux sous-objets COM style C#/VB
+    println!("\n🎯 Accès aux propriétés Loggable:");
+    
+    // Équivalent C#/VB: app.Loggable.UserName
+    let username = app.loggable()?.user_name()?;
+    println!("👤 app.loggable()?.user_name()? = '{}'", username);
+    
+    // Équivalent C#/VB: app.Loggable.IsLogged  
+    let is_logged = app.loggable()?.is_logged()?;
+    println!("🔐 app.loggable()?.is_logged()? = {}", is_logged);
+    
+    // Équivalent C#/VB: app.Loggable.IsAdministrator
+    let is_admin = app.loggable()?.is_administrator()?;
+    println!("� app.loggable()?.is_administrator()? = {}", is_admin);
+    
+    // Méthode helper qui combine plusieurs propriétés
+    println!("📊 {}", app.loggable()?.user_info()?);
+    
+    // CHAÎNAGE DIRECT possible! Mais on évite ServiceName qui peut ne pas exister
+    // let service = app.loggable()?.service_name()?;
+    // println!("🔧 app.loggable()?.service_name()? = '{}'", service);
+    
+    // À la place, testons une propriété qui existe
+    let user_info = app.loggable()?.user_info()?;
+    println!("📋 Résumé utilisateur: {}", user_info);
+    
+    println!("\n🎉 Syntaxe réussie! Rust peut faire du C#/VB style!");
+    
+    Ok(())
+}
+
+/// ANCIENNE APPROCHE: COM direct (pour comparaison)
+fn classic_com_demo() -> SageResult<()> {
     // Créer l'instance COM avec gestion automatique
     let instance = ComInstance::new(BSCPTA_CLSID)?;
     println!("✅ Instance BSCPTAApplication100c créée avec succès !");
@@ -106,6 +167,65 @@ fn test_safe_method_calls(instance: &ComInstance) -> SageResult<()> {
         }
     }
 
+    // Test spécial pour la propriété Loggable (IBILoggable)
+    println!("\n🔍 Test de la propriété Loggable (IBILoggable)...");
+
+    test_loggable_property(&safe_dispatch)?;
+
+    Ok(())
+}
+
+fn test_loggable_property(safe_dispatch: &SafeDispatch) -> SageResult<()> {
+    match safe_dispatch.call_method_by_name("Loggable", &[]) {
+        Ok(loggable_variant) => {
+            println!("✅ Propriété Loggable obtenue: {}", loggable_variant.type_name());
+            
+            // Vérifier si c'est un objet COM
+            if loggable_variant.is_object() {
+                println!("✅ Loggable est bien un objet COM");
+                
+                // Essayer d'extraire l'interface IDispatch
+                if let Ok(loggable_dispatch) = loggable_variant.to_dispatch() {
+                    println!("✅ Interface IDispatch extraite de Loggable");
+                    
+                    // Explorer automatiquement l'objet
+                    ComInstance::explore_nested_object(loggable_dispatch.clone())?;
+                    
+                    // Créer un SafeDispatch pour l'objet IBILoggable
+                    let loggable_safe = SafeDispatch::new(&loggable_dispatch);
+                    
+                    // Tester les 4 propriétés de IBILoggable
+                    println!("\n🔍 Test des propriétés IBILoggable:");
+                    let loggable_properties = [
+                        ("IsAdministrator", "Indique si l'utilisateur est administrateur"),
+                        ("IsLogged", "Indique si un utilisateur est connecté"),
+                        ("UserName", "Nom d'utilisateur connecté"),
+                        ("UserPwd", "Mot de passe utilisateur"),
+                    ];
+                    
+                    for (prop_name, description) in loggable_properties {
+                        match loggable_safe.call_method_by_name(prop_name, &[]) {
+                            Ok(result) => {
+                                println!("   ✅ {} ({}): {}", 
+                                    prop_name, description, format_variant_result(&result));
+                            }
+                            Err(e) => {
+                                println!("   ❌ {} ({}): {}", prop_name, description, e);
+                            }
+                        }
+                    }
+                } else {
+                    println!("❌ Impossible d'extraire IDispatch de la propriété Loggable");
+                }
+            } else {
+                println!("❌ Loggable n'est pas un objet COM: {}", loggable_variant.type_name());
+            }
+        }
+        Err(e) => {
+            println!("❌ Impossible d'obtenir la propriété Loggable: {}", e);
+        }
+    }
+    
     Ok(())
 }
 

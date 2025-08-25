@@ -1,0 +1,1846 @@
+[2025-08-25 16:11:05 UTC] 🔍 Analyseur récursif des objets COM Sage 100c v0.1.3 - AVEC LOGGING
+[2025-08-25 16:11:05 UTC] ═══════════════════════════════════════════════════════════════════
+[2025-08-25 16:11:05 UTC] 🎯 Objectif: Cartographier TOUTE l'API Sage disponible
+[2025-08-25 16:11:05 UTC] 📁 Toutes les sorties seront enregistrées dans: sage_analyzer_log.txt
+
+[2025-08-25 16:11:05 UTC] 🔎 === PHASE 1: DÉCOUVERTE DES TYPE LIBRARIES ===
+[2025-08-25 16:11:05 UTC] 🔍 Scanning des Type Libraries Sage...
+[2025-08-25 16:11:05 UTC]   🧪 Test du GUID: {00020430-0000-0000-C000-000000000046}
+[2025-08-25 16:11:05 UTC]     📚 Analyse de la TypeLib {00020430-0000-0000-C000-000000000046}
+[2025-08-25 16:11:05 UTC]   ⚠️  TypeLib vide ou non accessible
+[2025-08-25 16:11:05 UTC]   🧪 Test du GUID: {309DE0FB-9FB8-4F4E-8295-CC60C60DAA33}
+[2025-08-25 16:11:05 UTC]     📚 Analyse de la TypeLib {309DE0FB-9FB8-4F4E-8295-CC60C60DAA33}
+[2025-08-25 16:11:05 UTC]   ⚠️  TypeLib vide ou non accessible
+[2025-08-25 16:11:05 UTC]   🧪 Test du GUID: {ED0EC116-16B8-44CC-A68A-41BF6E15EB3F}
+[2025-08-25 16:11:05 UTC]     📚 Analyse de la TypeLib {ED0EC116-16B8-44CC-A68A-41BF6E15EB3F}
+[2025-08-25 16:11:05 UTC]   ⚠️  TypeLib vide ou non accessible
+[2025-08-25 16:11:05 UTC] 
+📚 === RÉSUMÉ DES TYPE LIBRARIES ===
+[2025-08-25 16:11:05 UTC] ❌ Aucune Type Library découverte
+[2025-08-25 16:11:05 UTC] 💡 Note: L'analyse des TypeLib nécessite une implémentation plus avancée
+[2025-08-25 16:11:05 UTC] 
+🧪 === PHASE 2: TEST DES PROGIDS CONNUS ===
+[2025-08-25 16:11:05 UTC] 🧪 Test des ProgIDs connus...
+[2025-08-25 16:11:05 UTC]   🔍 Test de: BSCPTAApplication100c
+[2025-08-25 16:11:05 UTC]   ❌ BSCPTAApplication100c: Erreur de conversion de 'ProgID' vers 'CLSID' pour la valeur 'Impossible de convertir BSCPTAApplication100c: Chaîne de classe incorrecte (0x800401F3)'
+[2025-08-25 16:11:05 UTC]   🔍 Test de: BSCIALApplication100c
+[2025-08-25 16:11:05 UTC]   ❌ BSCIALApplication100c: Erreur de conversion de 'ProgID' vers 'CLSID' pour la valeur 'Impossible de convertir BSCIALApplication100c: Chaîne de classe incorrecte (0x800401F3)'
+[2025-08-25 16:11:05 UTC] 
+🧪 === RÉSULTATS DES TESTS PROGID ===
+[2025-08-25 16:11:05 UTC] ✅ Objets COM directement instanciables (0):
+[2025-08-25 16:11:05 UTC] 
+❌ ProgIDs non instanciables (2):
+[2025-08-25 16:11:05 UTC]   ⚠️  BSCPTAApplication100c
+[2025-08-25 16:11:05 UTC]   ⚠️  BSCIALApplication100c
+[2025-08-25 16:11:05 UTC] 
+🚀 === PHASE 3: ANALYSE RÉCURSIVE TRADITIONNELLE ===
+[2025-08-25 16:11:05 UTC] ✅ Application Comptabilité Sage créée
+[2025-08-25 16:11:05 UTC] ✅ Application Gestion Commerciale Sage créée
+[2025-08-25 16:11:05 UTC] 🔍 Analyse de: BSCPTAApplication100c
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryDevise
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryEcriture
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryEcritureOD
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryDossierContact
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryDossier
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryTiersSalarie
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryTiersType
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryPays
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryFournisseur
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryCompteA
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryCollaborateur
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryTiersStat
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryTypeContacts
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryModeleGrille
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryTiersContact
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryTiers
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryAnalyse
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryTaxe
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryCompteR
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryCompteG
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: Loggable
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryJournalA
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryReglement
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryStructBanque
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryTiersAutre
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryJournal
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryModeleReglement
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryNatureCompte
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryModeleEcriture
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryClient
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: Licence
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryClientLivraison
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryEcritureA
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryBanque
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryRappel
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryAnalytique
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryServiceContact
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryCodeRisque
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryDevise
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCPTAApplication100c.FactoryDevise
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 2 propriétés, 10 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryEcriture
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCPTAApplication100c.FactoryEcriture
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 1 propriétés, 15 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryEcritureOD
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCPTAApplication100c.FactoryEcritureOD
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 0 propriétés, 10 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryDossierContact
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCPTAApplication100c.FactoryDossierContact
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 1 propriétés, 9 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryDossier
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCPTAApplication100c.FactoryDossier
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 0 propriétés, 8 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryTiersSalarie
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCPTAApplication100c.FactoryTiersSalarie
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 0 propriétés, 10 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryTiersType
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCPTAApplication100c.FactoryTiersType
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 0 propriétés, 9 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryPays
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCPTAApplication100c.FactoryPays
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 1 propriétés, 9 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryFournisseur
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCPTAApplication100c.FactoryFournisseur
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 0 propriétés, 11 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryCompteA
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCPTAApplication100c.FactoryCompteA
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 1 propriétés, 12 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryCollaborateur
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCPTAApplication100c.FactoryCollaborateur
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 1 propriétés, 9 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryTiersStat
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCPTAApplication100c.FactoryTiersStat
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 1 propriétés, 9 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryTypeContacts
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCPTAApplication100c.FactoryTypeContacts
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 1 propriétés, 9 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryModeleGrille
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCPTAApplication100c.FactoryModeleGrille
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 1 propriétés, 9 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryTiersContact
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCPTAApplication100c.FactoryTiersContact
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 0 propriétés, 8 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryTiers
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCPTAApplication100c.FactoryTiers
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 1 propriétés, 19 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryAnalyse
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCPTAApplication100c.FactoryAnalyse
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 1 propriétés, 9 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryTaxe
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCPTAApplication100c.FactoryTaxe
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 1 propriétés, 9 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryCompteR
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCPTAApplication100c.FactoryCompteR
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 0 propriétés, 12 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryCompteG
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCPTAApplication100c.FactoryCompteG
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 1 propriétés, 18 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: Loggable
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCPTAApplication100c.Loggable
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 8 propriétés, 0 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryJournalA
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCPTAApplication100c.FactoryJournalA
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 0 propriétés, 10 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryReglement
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCPTAApplication100c.FactoryReglement
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 1 propriétés, 9 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryStructBanque
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCPTAApplication100c.FactoryStructBanque
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 0 propriétés, 9 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryTiersAutre
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCPTAApplication100c.FactoryTiersAutre
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 0 propriétés, 10 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryJournal
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCPTAApplication100c.FactoryJournal
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 0 propriétés, 10 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryModeleReglement
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCPTAApplication100c.FactoryModeleReglement
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 1 propriétés, 9 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryNatureCompte
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCPTAApplication100c.FactoryNatureCompte
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 0 propriétés, 10 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryModeleEcriture
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCPTAApplication100c.FactoryModeleEcriture
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 1 propriétés, 9 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryClient
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCPTAApplication100c.FactoryClient
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 0 propriétés, 11 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: Licence
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCPTAApplication100c.Licence
+[2025-08-25 16:11:05 UTC]   📦 Propriété objet détectée: Products
+[2025-08-25 16:11:05 UTC]   📦 Propriété objet détectée: Product
+[2025-08-25 16:11:05 UTC]   🎯 Analyse récursive de la propriété objet: Products
+[2025-08-25 16:11:05 UTC]     🔍 Analyse de: BSCPTAApplication100c.Licence.Products
+[2025-08-25 16:11:05 UTC]     ✅ Analyse terminée: 1 propriétés, 0 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC]   🎯 Analyse récursive de la propriété objet: Product
+[2025-08-25 16:11:05 UTC]     🔍 Analyse de: BSCPTAApplication100c.Licence.Product
+[2025-08-25 16:11:05 UTC]     📦 Propriété objet détectée: UserInfo
+[2025-08-25 16:11:05 UTC]     🎯 Analyse récursive de la propriété objet: UserInfo
+[2025-08-25 16:11:05 UTC]       🔍 Analyse de: BSCPTAApplication100c.Licence.Product.UserInfo
+[2025-08-25 16:11:05 UTC]       ✅ Analyse terminée: 11 propriétés, 0 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC]     ✅ Analyse terminée: 3 propriétés, 0 méthodes, 1 sous-objets
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 9 propriétés, 0 méthodes, 2 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryClientLivraison
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCPTAApplication100c.FactoryClientLivraison
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 0 propriétés, 10 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryEcritureA
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCPTAApplication100c.FactoryEcritureA
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 0 propriétés, 11 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryBanque
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCPTAApplication100c.FactoryBanque
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 1 propriétés, 9 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryRappel
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCPTAApplication100c.FactoryRappel
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 1 propriétés, 9 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryAnalytique
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCPTAApplication100c.FactoryAnalytique
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 1 propriétés, 9 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryServiceContact
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCPTAApplication100c.FactoryServiceContact
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 1 propriétés, 9 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryCodeRisque
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCPTAApplication100c.FactoryCodeRisque
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 1 propriétés, 9 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] ✅ Analyse terminée: 40 propriétés, 7 méthodes, 38 sous-objets
+[2025-08-25 16:11:05 UTC] 🔍 Analyse de: BSCIALApplication100c
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryBaremeSolde
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryExpedition
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryParamDocStock
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryDocumentAchat
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryModele
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryConditionLivraison
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryFamille
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryGamme
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryArticle
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: Licence
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryBaremeCommission
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: Loggable
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactorySoucheInterne
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryCategorieComptaAchat
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryDocumentVente
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryArrondi
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryDocumentInterne
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryCategorieTarif
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactorySoucheAchat
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryDocument
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryCategorieComptaVente
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactorySoucheVente
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryPeriodicite
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryParamDocVente
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryDepot
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryDocumentStock
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryBaremeRabais
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryArticleStat
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryConditionnement
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryGlossaire
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryCategorieComptaStock
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryParamDocAchat
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryUnite
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactorySoucheStock
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryParamDocInterne
+[2025-08-25 16:11:05 UTC] 📦 Propriété objet détectée: FactoryProduit
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryBaremeSolde
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCIALApplication100c.FactoryBaremeSolde
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 1 propriétés, 11 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryExpedition
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCIALApplication100c.FactoryExpedition
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 1 propriétés, 9 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryParamDocStock
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCIALApplication100c.FactoryParamDocStock
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 1 propriétés, 10 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryDocumentAchat
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCIALApplication100c.FactoryDocumentAchat
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 1 propriétés, 21 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryModele
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCIALApplication100c.FactoryModele
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 1 propriétés, 9 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryConditionLivraison
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCIALApplication100c.FactoryConditionLivraison
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 1 propriétés, 9 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryFamille
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCIALApplication100c.FactoryFamille
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 1 propriétés, 10 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryGamme
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCIALApplication100c.FactoryGamme
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 1 propriétés, 9 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryArticle
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCIALApplication100c.FactoryArticle
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 3 propriétés, 24 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: Licence
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCIALApplication100c.Licence
+[2025-08-25 16:11:05 UTC]   📦 Propriété objet détectée: Product
+[2025-08-25 16:11:05 UTC]   📦 Propriété objet détectée: Products
+[2025-08-25 16:11:05 UTC]   🎯 Analyse récursive de la propriété objet: Product
+[2025-08-25 16:11:05 UTC]     🔍 Analyse de: BSCIALApplication100c.Licence.Product
+[2025-08-25 16:11:05 UTC]     📦 Propriété objet détectée: UserInfo
+[2025-08-25 16:11:05 UTC]     🎯 Analyse récursive de la propriété objet: UserInfo
+[2025-08-25 16:11:05 UTC]       🔍 Analyse de: BSCIALApplication100c.Licence.Product.UserInfo
+[2025-08-25 16:11:05 UTC]       ✅ Analyse terminée: 11 propriétés, 0 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC]     ✅ Analyse terminée: 3 propriétés, 0 méthodes, 1 sous-objets
+[2025-08-25 16:11:05 UTC]   🎯 Analyse récursive de la propriété objet: Products
+[2025-08-25 16:11:05 UTC]     🔍 Analyse de: BSCIALApplication100c.Licence.Products
+[2025-08-25 16:11:05 UTC]     ✅ Analyse terminée: 1 propriétés, 0 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 9 propriétés, 0 méthodes, 2 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryBaremeCommission
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCIALApplication100c.FactoryBaremeCommission
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 1 propriétés, 11 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: Loggable
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCIALApplication100c.Loggable
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 8 propriétés, 0 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactorySoucheInterne
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCIALApplication100c.FactorySoucheInterne
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 1 propriétés, 10 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryCategorieComptaAchat
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCIALApplication100c.FactoryCategorieComptaAchat
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 1 propriétés, 9 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryDocumentVente
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCIALApplication100c.FactoryDocumentVente
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 1 propriétés, 21 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryArrondi
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCIALApplication100c.FactoryArrondi
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 0 propriétés, 8 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryDocumentInterne
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCIALApplication100c.FactoryDocumentInterne
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 1 propriétés, 18 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryCategorieTarif
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCIALApplication100c.FactoryCategorieTarif
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 1 propriétés, 9 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactorySoucheAchat
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCIALApplication100c.FactorySoucheAchat
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 1 propriétés, 10 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryDocument
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCIALApplication100c.FactoryDocument
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 1 propriétés, 9 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryCategorieComptaVente
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCIALApplication100c.FactoryCategorieComptaVente
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 1 propriétés, 9 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactorySoucheVente
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCIALApplication100c.FactorySoucheVente
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 1 propriétés, 10 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryPeriodicite
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCIALApplication100c.FactoryPeriodicite
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 1 propriétés, 9 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryParamDocVente
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCIALApplication100c.FactoryParamDocVente
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 1 propriétés, 10 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryDepot
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCIALApplication100c.FactoryDepot
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 2 propriétés, 10 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryDocumentStock
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCIALApplication100c.FactoryDocumentStock
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 1 propriétés, 16 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryBaremeRabais
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCIALApplication100c.FactoryBaremeRabais
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 1 propriétés, 11 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryArticleStat
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCIALApplication100c.FactoryArticleStat
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 1 propriétés, 9 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryConditionnement
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCIALApplication100c.FactoryConditionnement
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 1 propriétés, 9 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryGlossaire
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCIALApplication100c.FactoryGlossaire
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 1 propriétés, 9 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryCategorieComptaStock
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCIALApplication100c.FactoryCategorieComptaStock
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 1 propriétés, 9 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryParamDocAchat
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCIALApplication100c.FactoryParamDocAchat
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 1 propriétés, 10 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryUnite
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCIALApplication100c.FactoryUnite
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 1 propriétés, 9 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactorySoucheStock
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCIALApplication100c.FactorySoucheStock
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 1 propriétés, 10 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryParamDocInterne
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCIALApplication100c.FactoryParamDocInterne
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 1 propriétés, 10 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] 🎯 Analyse récursive de la propriété objet: FactoryProduit
+[2025-08-25 16:11:05 UTC]   🔍 Analyse de: BSCIALApplication100c.FactoryProduit
+[2025-08-25 16:11:05 UTC]   ✅ Analyse terminée: 1 propriétés, 9 méthodes, 0 sous-objets
+[2025-08-25 16:11:05 UTC] ✅ Analyse terminée: 40 propriétés, 6 méthodes, 36 sous-objets
+[2025-08-25 16:11:05 UTC] 
+🔬 === PHASE 4: ANALYSE DES OBJETS RETOURNÉS ===
+[2025-08-25 16:11:05 UTC] 
+🔬 === SAGE COMPTABILITE ===
+[2025-08-25 16:11:06 UTC] 🔍 Analyse des objets retournés par les méthodes...
+[2025-08-25 16:11:06 UTC]   🧪 Test: FactoryJournal.ReadNumero(VTE)
+[2025-08-25 16:11:06 UTC] 📦 Propriété objet détectée: Factory
+[2025-08-25 16:11:06 UTC] 📦 Propriété objet détectée: OID
+[2025-08-25 16:11:06 UTC] 📦 Propriété objet détectée: DateModification
+[2025-08-25 16:11:06 UTC] 📦 Propriété objet détectée: Stream
+[2025-08-25 16:11:06 UTC] 📦 Propriété objet détectée: DateCreation
+[2025-08-25 16:11:06 UTC] 📦 Propriété objet détectée: OIDExternal
+[2025-08-25 16:11:06 UTC]   ✅ Objet découvert: ReturnedBy.FactoryJournal.ReadNumero (type réel)
+[2025-08-25 16:11:06 UTC]   🧪 Test: FactoryTiers.ReadNumero(BAGUES)
+[2025-08-25 16:11:06 UTC] 📦 Propriété objet détectée: Stream
+[2025-08-25 16:11:06 UTC] 📦 Propriété objet détectée: OID
+[2025-08-25 16:11:06 UTC] 📦 Propriété objet détectée: OIDExternal
+[2025-08-25 16:11:06 UTC] 📦 Propriété objet détectée: DateCreation
+[2025-08-25 16:11:06 UTC] 📦 Propriété objet détectée: Factory
+[2025-08-25 16:11:06 UTC] 📦 Propriété objet détectée: DateModification
+[2025-08-25 16:11:06 UTC]   ✅ Objet découvert: ReturnedBy.FactoryTiers.ReadNumero (type réel)
+[2025-08-25 16:11:06 UTC]   🧪 Test: FactoryCompteG.ReadNumero(601020)
+[2025-08-25 16:11:06 UTC] 📦 Propriété objet détectée: OIDExternal
+[2025-08-25 16:11:06 UTC] 📦 Propriété objet détectée: DateModification
+[2025-08-25 16:11:06 UTC] 📦 Propriété objet détectée: OID
+[2025-08-25 16:11:06 UTC] 📦 Propriété objet détectée: Stream
+[2025-08-25 16:11:06 UTC] 📦 Propriété objet détectée: DateCreation
+[2025-08-25 16:11:06 UTC] 📦 Propriété objet détectée: Factory
+[2025-08-25 16:11:06 UTC]   ✅ Objet découvert: ReturnedBy.FactoryCompteG.ReadNumero (type réel)
+[2025-08-25 16:11:06 UTC]   🧪 Test: FactoryEcriture.ReadNumero(1)
+[2025-08-25 16:11:06 UTC] 📦 Propriété objet détectée: OID
+[2025-08-25 16:11:06 UTC] 📦 Propriété objet détectée: DateCreation
+[2025-08-25 16:11:06 UTC] 📦 Propriété objet détectée: DateModification
+[2025-08-25 16:11:06 UTC] 📦 Propriété objet détectée: OIDExternal
+[2025-08-25 16:11:06 UTC] 📦 Propriété objet détectée: Factory
+[2025-08-25 16:11:06 UTC] 📦 Propriété objet détectée: Stream
+[2025-08-25 16:11:06 UTC]   ✅ Objet découvert: ReturnedBy.FactoryEcriture.ReadNumero (type réel)
+[2025-08-25 16:11:06 UTC] 
+🔬 === RÉSUMÉ DES OBJETS RETOURNÉS ===
+[2025-08-25 16:11:06 UTC] ✅ Objets COM découverts via les retours de méthodes (4):
+[2025-08-25 16:11:06 UTC]   📦 ReturnedBy.FactoryJournal.ReadNumero - 12 propriétés, 6 méthodes
+[2025-08-25 16:11:06 UTC]   📦 ReturnedBy.FactoryTiers.ReadNumero - 12 propriétés, 6 méthodes
+[2025-08-25 16:11:06 UTC]   📦 ReturnedBy.FactoryCompteG.ReadNumero - 12 propriétés, 6 méthodes
+[2025-08-25 16:11:06 UTC]   📦 ReturnedBy.FactoryEcriture.ReadNumero - 12 propriétés, 6 méthodes
+[2025-08-25 16:11:06 UTC] 
+🔬 === SAGE GESTION COMMERCIALE ===
+[2025-08-25 16:11:08 UTC] 🔍 Analyse des objets retournés par les méthodes...
+[2025-08-25 16:11:08 UTC]   🧪 Test: FactoryArticle.ReadNumero(BAAR01)
+[2025-08-25 16:11:08 UTC]   ❌ Erreur: Erreur lors de l'appel de 'ReadNumero' (ID: -1): Méthode 'ReadNumero' non trouvée: Nom inconnu.
+[2025-08-25 16:11:08 UTC]   🧪 Test: FactoryDocument.ReadNumero(BC00010)
+[2025-08-25 16:11:08 UTC]   ❌ Erreur: Erreur lors de l'appel de 'ReadNumero' (ID: -1): Méthode 'ReadNumero' non trouvée: Nom inconnu.
+[2025-08-25 16:11:08 UTC] 
+🔬 === RÉSUMÉ DES OBJETS RETOURNÉS ===
+[2025-08-25 16:11:08 UTC] ❌ Aucun objet COM découvert via les retours de méthodes
+[2025-08-25 16:11:08 UTC] 💡 Note: Les objets peuvent nécessiter des paramètres spécifiques ou une base ouverte
+[2025-08-25 16:11:08 UTC] 
+📊 === PHASE 5: SYNTHÈSE FINALE ===
+[2025-08-25 16:11:08 UTC] 
+🔬 === SAGE COMPTABILITE ===
+[2025-08-25 16:11:08 UTC] 
+📊 === RÉSUMÉ DE L'ANALYSE ===
+[2025-08-25 16:11:08 UTC] 📦 BSCPTAApplication100c
+[2025-08-25 16:11:08 UTC]    📋 40 propriétés, 🔧 7 méthodes
+[2025-08-25 16:11:08 UTC]    📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]       [16] FactoryDevise : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [22] FactoryEcriture : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [48] FactoryEcritureOD : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [25] FactoryDossierContact : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [26] FactoryDossier : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [31] FactoryTiersSalarie : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [37] FactoryTiersType : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [44] FactoryPays : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [13] FactoryFournisseur : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [18] FactoryCompteA : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [38] FactoryCollaborateur : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [34] FactoryTiersStat : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [39] FactoryTypeContacts : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [35] FactoryModeleGrille : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [50] FactoryTiersContact : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [11] FactoryTiers : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [20] FactoryAnalyse : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [1] IsOpen : Boolean [get]
+[2025-08-25 16:11:08 UTC]            Propriété Boolean - Accès: get
+[2025-08-25 16:11:08 UTC]       [10] Name : String [get]
+[2025-08-25 16:11:08 UTC]            Propriété String - Accès: get
+[2025-08-25 16:11:08 UTC]       [24] FactoryTaxe : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [45] FactoryCompteR : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [14] FactoryCompteG : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [28] Loggable : Variant [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Variant - Accès: get
+[2025-08-25 16:11:08 UTC]       [47] FactoryJournalA : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [19] FactoryReglement : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [42] FactoryStructBanque : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [30] FactoryTiersAutre : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [23] FactoryJournal : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [36] FactoryModeleReglement : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [41] FactoryNatureCompte : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [32] FactoryModeleEcriture : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [12] FactoryClient : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [27] Licence : Variant [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Variant - Accès: get
+[2025-08-25 16:11:08 UTC]       [49] FactoryClientLivraison : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [46] FactoryEcritureA : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [40] FactoryBanque : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [33] FactoryRappel : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [21] FactoryAnalytique : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [17] FactoryServiceContact : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [15] FactoryCodeRisque : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]    🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]       [2] Open(param0: VARIANT) -> void
+[2025-08-25 16:11:08 UTC]       [3] Close() -> void
+[2025-08-25 16:11:08 UTC]       [4] Create() -> void
+[2025-08-25 16:11:08 UTC]       [5] DatabaseInfo() -> String
+[2025-08-25 16:11:08 UTC]       [6] Synchro() -> Variant
+[2025-08-25 16:11:08 UTC]       [7] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]       [43] CreateProcess_Lettrer() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCPTAApplication100c.FactoryDevise
+[2025-08-25 16:11:08 UTC]      📋 2 propriétés, 🔧 10 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [10] ExistIntitule : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]         [12] ExistCodeISO : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] ReadIntitule() -> Variant
+[2025-08-25 16:11:08 UTC]         [13] ReadCodeISO() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCPTAApplication100c.FactoryEcriture
+[2025-08-25 16:11:08 UTC]      📋 1 propriétés, 🔧 15 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [12] InfoLibreFields : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [10] QueryJournalPeriode() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] QueryTiers() -> Variant
+[2025-08-25 16:11:08 UTC]         [13] ExistNumero() -> Variant
+[2025-08-25 16:11:08 UTC]         [14] ReadNumero() -> Variant
+[2025-08-25 16:11:08 UTC]         [15] QueryCompteG() -> Variant
+[2025-08-25 16:11:08 UTC]         [16] _QuerySynchroOID() -> Variant
+[2025-08-25 16:11:08 UTC]         [17] CreateInfoLibre() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCPTAApplication100c.FactoryEcritureOD
+[2025-08-25 16:11:08 UTC]      📋 0 propriétés, 🔧 10 méthodes
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [10] QueryJournal() -> Variant
+[2025-08-25 16:11:08 UTC]         [15] QueryCompte() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCPTAApplication100c.FactoryDossierContact
+[2025-08-25 16:11:08 UTC]      📋 1 propriétés, 🔧 9 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [11] ExistNomPrenom : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [12] ReadNomPrenom() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCPTAApplication100c.FactoryDossier
+[2025-08-25 16:11:08 UTC]      📋 0 propriétés, 🔧 8 méthodes
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCPTAApplication100c.FactoryTiersSalarie
+[2025-08-25 16:11:08 UTC]      📋 0 propriétés, 🔧 10 méthodes
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] ExistNumero() -> Variant
+[2025-08-25 16:11:08 UTC]         [12] ReadNumero() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCPTAApplication100c.FactoryTiersType
+[2025-08-25 16:11:08 UTC]      📋 0 propriétés, 🔧 9 méthodes
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] ReadTypeTiers() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCPTAApplication100c.FactoryPays
+[2025-08-25 16:11:08 UTC]      📋 1 propriétés, 🔧 9 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [10] ExistIntitule : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] ReadIntitule() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCPTAApplication100c.FactoryFournisseur
+[2025-08-25 16:11:08 UTC]      📋 0 propriétés, 🔧 11 méthodes
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [10] ListOrderClassement() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] ExistNumero() -> Variant
+[2025-08-25 16:11:08 UTC]         [12] ReadNumero() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCPTAApplication100c.FactoryCompteA
+[2025-08-25 16:11:08 UTC]      📋 1 propriétés, 🔧 12 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [12] InfoLibreFields : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [10] ExistNumero() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] ReadNumero() -> Variant
+[2025-08-25 16:11:08 UTC]         [13] QueryPlanA() -> Variant
+[2025-08-25 16:11:08 UTC]         [14] CreateInfoLibre() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCPTAApplication100c.FactoryCollaborateur
+[2025-08-25 16:11:08 UTC]      📋 1 propriétés, 🔧 9 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [10] ExistNomPrenom : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] ReadNomPrenom() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCPTAApplication100c.FactoryTiersStat
+[2025-08-25 16:11:08 UTC]      📋 1 propriétés, 🔧 9 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [10] ExistIntitule : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] ReadIntitule() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCPTAApplication100c.FactoryTypeContacts
+[2025-08-25 16:11:08 UTC]      📋 1 propriétés, 🔧 9 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [10] ExistIntitule : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] ReadIntitule() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCPTAApplication100c.FactoryModeleGrille
+[2025-08-25 16:11:08 UTC]      📋 1 propriétés, 🔧 9 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [10] ExistIntitule : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] ReadIntitule() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCPTAApplication100c.FactoryTiersContact
+[2025-08-25 16:11:08 UTC]      📋 0 propriétés, 🔧 8 méthodes
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCPTAApplication100c.FactoryTiers
+[2025-08-25 16:11:08 UTC]      📋 1 propriétés, 🔧 19 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [20] InfoLibreFields : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [10] ListOrderNumero() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] ListOrderClassement() -> Variant
+[2025-08-25 16:11:08 UTC]         [12] ListOrderType() -> Variant
+[2025-08-25 16:11:08 UTC]         [13] ExistNumero() -> Variant
+[2025-08-25 16:11:08 UTC]         [14] ReadNumero() -> Variant
+[2025-08-25 16:11:08 UTC]         [15] QueryActifOrderNumero() -> Variant
+[2025-08-25 16:11:08 UTC]         [17] QueryTypeNumeroOrderNumero() -> Variant
+[2025-08-25 16:11:08 UTC]         [18] QueryReplicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [19] QueryMouvementeOrderNumero() -> Variant
+[2025-08-25 16:11:08 UTC]         [21] QueryCollaborateur() -> Variant
+[2025-08-25 16:11:08 UTC]         [22] CreateInfoLibre() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCPTAApplication100c.FactoryAnalyse
+[2025-08-25 16:11:08 UTC]      📋 1 propriétés, 🔧 9 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [10] ExistIntitule : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] ReadIntitule() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCPTAApplication100c.FactoryTaxe
+[2025-08-25 16:11:08 UTC]      📋 1 propriétés, 🔧 9 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [10] ExistCode : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] ReadCode() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCPTAApplication100c.FactoryCompteR
+[2025-08-25 16:11:08 UTC]      📋 0 propriétés, 🔧 12 méthodes
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [10] ListOrderClassement() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] ListOrderType() -> Variant
+[2025-08-25 16:11:08 UTC]         [12] ExistNumero() -> Variant
+[2025-08-25 16:11:08 UTC]         [13] ReadNumero() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCPTAApplication100c.FactoryCompteG
+[2025-08-25 16:11:08 UTC]      📋 1 propriétés, 🔧 18 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [15] InfoLibreFields : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [10] ListOrderClassement() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] ListOrderType() -> Variant
+[2025-08-25 16:11:08 UTC]         [12] ExistNumero() -> Variant
+[2025-08-25 16:11:08 UTC]         [13] ReadNumero() -> Variant
+[2025-08-25 16:11:08 UTC]         [14] QueryTypeNumeroOrderNumero() -> Variant
+[2025-08-25 16:11:08 UTC]         [16] QueryActifOrderNumero() -> Variant
+[2025-08-25 16:11:08 UTC]         [17] QueryActifOrderType() -> Variant
+[2025-08-25 16:11:08 UTC]         [18] QueryActifOrderClassement() -> Variant
+[2025-08-25 16:11:08 UTC]         [19] QueryCompteR() -> Variant
+[2025-08-25 16:11:08 UTC]         [20] CreateInfoLibre() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCPTAApplication100c.Loggable
+[2025-08-25 16:11:08 UTC]      📋 8 propriétés, 🔧 0 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [8] ApplicationToken : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]         [3] IsAdministrator : Boolean [get]
+[2025-08-25 16:11:08 UTC]              Propriété Boolean - Accès: get
+[2025-08-25 16:11:08 UTC]         [4] IsLogged : Boolean [get]
+[2025-08-25 16:11:08 UTC]              Propriété Boolean - Accès: get
+[2025-08-25 16:11:08 UTC]         [1] UserName : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]         [2] UserPwd : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]         [6] ServiceId : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]         [7] ServiceName : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]         [5] ManagementPassword : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]   📦 BSCPTAApplication100c.FactoryJournalA
+[2025-08-25 16:11:08 UTC]      📋 0 propriétés, 🔧 10 méthodes
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [10] ExistNumero() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] ReadNumero() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCPTAApplication100c.FactoryReglement
+[2025-08-25 16:11:08 UTC]      📋 1 propriétés, 🔧 9 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [10] ExistIntitule : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] ReadIntitule() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCPTAApplication100c.FactoryStructBanque
+[2025-08-25 16:11:08 UTC]      📋 0 propriétés, 🔧 9 méthodes
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [10] ReadType() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCPTAApplication100c.FactoryTiersAutre
+[2025-08-25 16:11:08 UTC]      📋 0 propriétés, 🔧 10 méthodes
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] ExistNumero() -> Variant
+[2025-08-25 16:11:08 UTC]         [12] ReadNumero() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCPTAApplication100c.FactoryJournal
+[2025-08-25 16:11:08 UTC]      📋 0 propriétés, 🔧 10 méthodes
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [10] ExistNumero() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] ReadNumero() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCPTAApplication100c.FactoryModeleReglement
+[2025-08-25 16:11:08 UTC]      📋 1 propriétés, 🔧 9 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [10] ExistIntitule : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] ReadIntitule() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCPTAApplication100c.FactoryNatureCompte
+[2025-08-25 16:11:08 UTC]      📋 0 propriétés, 🔧 10 méthodes
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] ReadNature() -> Variant
+[2025-08-25 16:11:08 UTC]         [12] FindNatureProche() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCPTAApplication100c.FactoryModeleEcriture
+[2025-08-25 16:11:08 UTC]      📋 1 propriétés, 🔧 9 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [10] ExistIntitule : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] ReadIntitule() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCPTAApplication100c.FactoryClient
+[2025-08-25 16:11:08 UTC]      📋 0 propriétés, 🔧 11 méthodes
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [10] ListOrderClassement() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] ExistNumero() -> Variant
+[2025-08-25 16:11:08 UTC]         [12] ReadNumero() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCPTAApplication100c.Licence
+[2025-08-25 16:11:08 UTC]      📋 9 propriétés, 🔧 0 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [9] Version : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]         [2] Key : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]         [1] IsValid : Boolean [get]
+[2025-08-25 16:11:08 UTC]              Propriété Boolean - Accès: get
+[2025-08-25 16:11:08 UTC]         [5] Creator : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]         [6] CreatorExtension : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]         [4] Products : Variant [get] [OBJET]
+[2025-08-25 16:11:08 UTC]              Objet COM Variant - Accès: get
+[2025-08-25 16:11:08 UTC]         [7] WorkStationKey : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]         [3] Product : Variant [get] [OBJET]
+[2025-08-25 16:11:08 UTC]              Objet COM Variant - Accès: get
+[2025-08-25 16:11:08 UTC]         [8] LicenceCount : Integer [get]
+[2025-08-25 16:11:08 UTC]              Propriété Integer - Accès: get
+[2025-08-25 16:11:08 UTC]     📦 BSCPTAApplication100c.Licence.Products
+[2025-08-25 16:11:08 UTC]        📋 1 propriétés, 🔧 0 méthodes
+[2025-08-25 16:11:08 UTC]        📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]           [1] Count : Integer [get]
+[2025-08-25 16:11:08 UTC]                Propriété Integer - Accès: get
+[2025-08-25 16:11:08 UTC]     📦 BSCPTAApplication100c.Licence.Product
+[2025-08-25 16:11:08 UTC]        📋 3 propriétés, 🔧 0 méthodes
+[2025-08-25 16:11:08 UTC]        📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]           [3] UserInfo : Variant [get] [OBJET]
+[2025-08-25 16:11:08 UTC]                Objet COM Variant - Accès: get
+[2025-08-25 16:11:08 UTC]           [2] Name : String [get]
+[2025-08-25 16:11:08 UTC]                Propriété String - Accès: get
+[2025-08-25 16:11:08 UTC]           [1] SerialNumber : Variant [get]
+[2025-08-25 16:11:08 UTC]                Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]       📦 BSCPTAApplication100c.Licence.Product.UserInfo
+[2025-08-25 16:11:08 UTC]          📋 11 propriétés, 🔧 0 méthodes
+[2025-08-25 16:11:08 UTC]   📦 BSCPTAApplication100c.FactoryClientLivraison
+[2025-08-25 16:11:08 UTC]      📋 0 propriétés, 🔧 10 méthodes
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [10] QueryClient() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] _QuerySynchroOID() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCPTAApplication100c.FactoryEcritureA
+[2025-08-25 16:11:08 UTC]      📋 0 propriétés, 🔧 11 méthodes
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [10] QueryPlanA() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] QuerySectionA() -> Variant
+[2025-08-25 16:11:08 UTC]         [12] _QuerySynchroOID() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCPTAApplication100c.FactoryBanque
+[2025-08-25 16:11:08 UTC]      📋 1 propriétés, 🔧 9 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [10] ExistAbrege : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] ReadAbrege() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCPTAApplication100c.FactoryRappel
+[2025-08-25 16:11:08 UTC]      📋 1 propriétés, 🔧 9 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [10] ExistIntitule : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] ReadIntitule() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCPTAApplication100c.FactoryAnalytique
+[2025-08-25 16:11:08 UTC]      📋 1 propriétés, 🔧 9 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [10] ExistIntitule : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] ReadIntitule() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCPTAApplication100c.FactoryServiceContact
+[2025-08-25 16:11:08 UTC]      📋 1 propriétés, 🔧 9 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [10] ExistIntitule : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] ReadIntitule() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCPTAApplication100c.FactoryCodeRisque
+[2025-08-25 16:11:08 UTC]      📋 1 propriétés, 🔧 9 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [10] ExistIntitule : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] ReadIntitule() -> Variant
+[2025-08-25 16:11:08 UTC] 
+🔬 === SAGE GESTION COMMERCIALE ===
+[2025-08-25 16:11:08 UTC] 
+📊 === RÉSUMÉ DE L'ANALYSE ===
+[2025-08-25 16:11:08 UTC] 📦 BSCIALApplication100c
+[2025-08-25 16:11:08 UTC]    📋 40 propriétés, 🔧 6 méthodes
+[2025-08-25 16:11:08 UTC]    📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]       [49] FactoryBaremeSolde : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [20] FactoryExpedition : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [45] FactoryParamDocStock : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [32] FactoryDocumentAchat : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [1] IsOpen : Boolean [get]
+[2025-08-25 16:11:08 UTC]            Propriété Boolean - Accès: get
+[2025-08-25 16:11:08 UTC]       [27] FactoryModele : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [21] FactoryConditionLivraison : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [13] FactoryFamille : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [24] FactoryGamme : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [38] DepotPrincipal : Variant [get]
+[2025-08-25 16:11:08 UTC]            Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]       [12] FactoryArticle : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [36] Licence : Variant [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Variant - Accès: get
+[2025-08-25 16:11:08 UTC]       [47] FactoryBaremeCommission : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [37] Loggable : Variant [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Variant - Accès: get
+[2025-08-25 16:11:08 UTC]       [41] FactorySoucheInterne : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [10] Name : String [get]
+[2025-08-25 16:11:08 UTC]            Propriété String - Accès: get
+[2025-08-25 16:11:08 UTC]       [17] FactoryCategorieComptaAchat : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [33] FactoryDocumentVente : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [29] FactoryArrondi : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [11] CptaApplication : Variant [get]
+[2025-08-25 16:11:08 UTC]            Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]       [34] FactoryDocumentInterne : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [15] FactoryCategorieTarif : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [40] FactorySoucheAchat : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [30] FactoryDocument : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [16] FactoryCategorieComptaVente : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [39] FactorySoucheVente : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [19] FactoryPeriodicite : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [43] FactoryParamDocVente : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [22] FactoryDepot : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [31] FactoryDocumentStock : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [48] FactoryBaremeRabais : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [50] FactoryArticleStat : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [25] FactoryConditionnement : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [28] FactoryGlossaire : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [18] FactoryCategorieComptaStock : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [44] FactoryParamDocAchat : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [23] FactoryUnite : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [42] FactorySoucheStock : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [46] FactoryParamDocInterne : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]       [26] FactoryProduit : Object [get] [OBJET]
+[2025-08-25 16:11:08 UTC]            Objet COM Object - Accès: get
+[2025-08-25 16:11:08 UTC]    🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]       [2] Open(param0: VARIANT) -> void
+[2025-08-25 16:11:08 UTC]       [3] Close() -> void
+[2025-08-25 16:11:08 UTC]       [4] Create() -> void
+[2025-08-25 16:11:08 UTC]       [5] DatabaseInfo() -> String
+[2025-08-25 16:11:08 UTC]       [6] Synchro() -> Variant
+[2025-08-25 16:11:08 UTC]       [7] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCIALApplication100c.FactoryBaremeSolde
+[2025-08-25 16:11:08 UTC]      📋 1 propriétés, 🔧 11 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [10] ExistIntitule : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] ReadIntitule() -> Variant
+[2025-08-25 16:11:08 UTC]         [12] QueryApplicableDate() -> Variant
+[2025-08-25 16:11:08 UTC]         [13] QueryApplicableArticleDate() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCIALApplication100c.FactoryExpedition
+[2025-08-25 16:11:08 UTC]      📋 1 propriétés, 🔧 9 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [10] ExistIntitule : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] ReadIntitule() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCIALApplication100c.FactoryParamDocStock
+[2025-08-25 16:11:08 UTC]      📋 1 propriétés, 🔧 10 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [10] ExistIntitule : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] ReadIntitule() -> Variant
+[2025-08-25 16:11:08 UTC]         [12] ReadTypeDocument() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCIALApplication100c.FactoryDocumentAchat
+[2025-08-25 16:11:08 UTC]      📋 1 propriétés, 🔧 21 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [23] ExistPiece : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [20] CreateType() -> Variant
+[2025-08-25 16:11:08 UTC]         [21] QueryTypeOrderPiece() -> Variant
+[2025-08-25 16:11:08 UTC]         [22] QueryTypePieceOrderPiece() -> Variant
+[2025-08-25 16:11:08 UTC]         [24] ReadPiece() -> Variant
+[2025-08-25 16:11:08 UTC]         [25] CreateFacture() -> Variant
+[2025-08-25 16:11:08 UTC]         [26] QueryTiersOrderDate() -> Variant
+[2025-08-25 16:11:08 UTC]         [27] QueryTiersTypeOrderDate() -> Variant
+[2025-08-25 16:11:08 UTC]         [28] QueryCollaborateurType() -> Variant
+[2025-08-25 16:11:08 UTC]         [29] QueryTiersDateOrderDate() -> Variant
+[2025-08-25 16:11:08 UTC]         [30] QueryTiersTypeDateOrderDate() -> Variant
+[2025-08-25 16:11:08 UTC]         [31] _QuerySynchroType() -> Variant
+[2025-08-25 16:11:08 UTC]         [32] _QuerySynchroOIDType() -> Variant
+[2025-08-25 16:11:08 UTC]         [33] QueryTypeDateOrderPiece() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCIALApplication100c.FactoryModele
+[2025-08-25 16:11:08 UTC]      📋 1 propriétés, 🔧 9 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [10] ExistIntitule : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] ReadIntitule() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCIALApplication100c.FactoryConditionLivraison
+[2025-08-25 16:11:08 UTC]      📋 1 propriétés, 🔧 9 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [10] ExistIntitule : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] ReadIntitule() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCIALApplication100c.FactoryFamille
+[2025-08-25 16:11:08 UTC]      📋 1 propriétés, 🔧 10 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [10] ExistCode : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] ReadCode() -> Variant
+[2025-08-25 16:11:08 UTC]         [12] QueryCatalogue() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCIALApplication100c.FactoryGamme
+[2025-08-25 16:11:08 UTC]      📋 1 propriétés, 🔧 9 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [10] ExistIntitule : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] ReadIntitule() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCIALApplication100c.FactoryArticle
+[2025-08-25 16:11:08 UTC]      📋 3 propriétés, 🔧 24 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [12] ExistReference : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]         [14] ExistCodeBarre : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]         [22] InfoLibreFields : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [10] ListOrderReference() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] ListOrderFamille() -> Variant
+[2025-08-25 16:11:08 UTC]         [13] ReadReference() -> Variant
+[2025-08-25 16:11:08 UTC]         [15] ReadCodeBarre() -> Variant
+[2025-08-25 16:11:08 UTC]         [16] QueryActifOrderReference() -> Variant
+[2025-08-25 16:11:08 UTC]         [17] QueryPublieOrderReference() -> Variant
+[2025-08-25 16:11:08 UTC]         [18] QueryReferenceOrderReference() -> Variant
+[2025-08-25 16:11:08 UTC]         [19] QueryFamille() -> Variant
+[2025-08-25 16:11:08 UTC]         [20] QueryMouvementeOrderReference() -> Variant
+[2025-08-25 16:11:08 UTC]         [21] QueryReplicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [23] QueryCatalogue() -> Variant
+[2025-08-25 16:11:08 UTC]         [24] QueryBaremeSoldeApplicable() -> Variant
+[2025-08-25 16:11:08 UTC]         [25] QueryDepotEmplacement() -> Variant
+[2025-08-25 16:11:08 UTC]         [26] _QuerySynchroOID() -> Variant
+[2025-08-25 16:11:08 UTC]         [27] ListOrderDesignation() -> Variant
+[2025-08-25 16:11:08 UTC]         [28] CreateInfoLibre() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCIALApplication100c.Licence
+[2025-08-25 16:11:08 UTC]      📋 9 propriétés, 🔧 0 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [8] LicenceCount : Integer [get]
+[2025-08-25 16:11:08 UTC]              Propriété Integer - Accès: get
+[2025-08-25 16:11:08 UTC]         [9] Version : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]         [7] WorkStationKey : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]         [1] IsValid : Boolean [get]
+[2025-08-25 16:11:08 UTC]              Propriété Boolean - Accès: get
+[2025-08-25 16:11:08 UTC]         [5] Creator : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]         [2] Key : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]         [3] Product : Variant [get] [OBJET]
+[2025-08-25 16:11:08 UTC]              Objet COM Variant - Accès: get
+[2025-08-25 16:11:08 UTC]         [6] CreatorExtension : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]         [4] Products : Variant [get] [OBJET]
+[2025-08-25 16:11:08 UTC]              Objet COM Variant - Accès: get
+[2025-08-25 16:11:08 UTC]     📦 BSCIALApplication100c.Licence.Product
+[2025-08-25 16:11:08 UTC]        📋 3 propriétés, 🔧 0 méthodes
+[2025-08-25 16:11:08 UTC]        📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]           [1] SerialNumber : Variant [get]
+[2025-08-25 16:11:08 UTC]                Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]           [3] UserInfo : Variant [get] [OBJET]
+[2025-08-25 16:11:08 UTC]                Objet COM Variant - Accès: get
+[2025-08-25 16:11:08 UTC]           [2] Name : String [get]
+[2025-08-25 16:11:08 UTC]                Propriété String - Accès: get
+[2025-08-25 16:11:08 UTC]       📦 BSCIALApplication100c.Licence.Product.UserInfo
+[2025-08-25 16:11:08 UTC]          📋 11 propriétés, 🔧 0 méthodes
+[2025-08-25 16:11:08 UTC]     📦 BSCIALApplication100c.Licence.Products
+[2025-08-25 16:11:08 UTC]        📋 1 propriétés, 🔧 0 méthodes
+[2025-08-25 16:11:08 UTC]        📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]           [1] Count : Integer [get]
+[2025-08-25 16:11:08 UTC]                Propriété Integer - Accès: get
+[2025-08-25 16:11:08 UTC]   📦 BSCIALApplication100c.FactoryBaremeCommission
+[2025-08-25 16:11:08 UTC]      📋 1 propriétés, 🔧 11 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [10] ExistIntitule : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] ReadIntitule() -> Variant
+[2025-08-25 16:11:08 UTC]         [12] QueryApplicableDate() -> Variant
+[2025-08-25 16:11:08 UTC]         [13] QueryApplicableArticleDate() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCIALApplication100c.Loggable
+[2025-08-25 16:11:08 UTC]      📋 8 propriétés, 🔧 0 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] UserName : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]         [2] UserPwd : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]         [3] IsAdministrator : Boolean [get]
+[2025-08-25 16:11:08 UTC]              Propriété Boolean - Accès: get
+[2025-08-25 16:11:08 UTC]         [5] ManagementPassword : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]         [8] ApplicationToken : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]         [7] ServiceName : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]         [4] IsLogged : Boolean [get]
+[2025-08-25 16:11:08 UTC]              Propriété Boolean - Accès: get
+[2025-08-25 16:11:08 UTC]         [6] ServiceId : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]   📦 BSCIALApplication100c.FactorySoucheInterne
+[2025-08-25 16:11:08 UTC]      📋 1 propriétés, 🔧 10 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [10] ExistIntitule : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] ReadIntitule() -> Variant
+[2025-08-25 16:11:08 UTC]         [12] QuerySoucheValide() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCIALApplication100c.FactoryCategorieComptaAchat
+[2025-08-25 16:11:08 UTC]      📋 1 propriétés, 🔧 9 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [10] ExistIntitule : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] ReadIntitule() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCIALApplication100c.FactoryDocumentVente
+[2025-08-25 16:11:08 UTC]      📋 1 propriétés, 🔧 21 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [23] ExistPiece : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [20] CreateType() -> Variant
+[2025-08-25 16:11:08 UTC]         [21] QueryTypeOrderPiece() -> Variant
+[2025-08-25 16:11:08 UTC]         [22] QueryTypePieceOrderPiece() -> Variant
+[2025-08-25 16:11:08 UTC]         [24] ReadPiece() -> Variant
+[2025-08-25 16:11:08 UTC]         [25] CreateFacture() -> Variant
+[2025-08-25 16:11:08 UTC]         [26] QueryTiersOrderDate() -> Variant
+[2025-08-25 16:11:08 UTC]         [27] QueryTiersTypeOrderDate() -> Variant
+[2025-08-25 16:11:08 UTC]         [28] QueryCollaborateurType() -> Variant
+[2025-08-25 16:11:08 UTC]         [29] QueryTiersDateOrderDate() -> Variant
+[2025-08-25 16:11:08 UTC]         [30] QueryTiersTypeDateOrderDate() -> Variant
+[2025-08-25 16:11:08 UTC]         [31] _QuerySynchroType() -> Variant
+[2025-08-25 16:11:08 UTC]         [32] _QuerySynchroOIDType() -> Variant
+[2025-08-25 16:11:08 UTC]         [33] QueryTypeDateOrderPiece() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCIALApplication100c.FactoryArrondi
+[2025-08-25 16:11:08 UTC]      📋 0 propriétés, 🔧 8 méthodes
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCIALApplication100c.FactoryDocumentInterne
+[2025-08-25 16:11:08 UTC]      📋 1 propriétés, 🔧 18 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [23] ExistPiece : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [20] CreateType() -> Variant
+[2025-08-25 16:11:08 UTC]         [21] QueryTypeOrderPiece() -> Variant
+[2025-08-25 16:11:08 UTC]         [22] QueryTypePieceOrderPiece() -> Variant
+[2025-08-25 16:11:08 UTC]         [24] ReadPiece() -> Variant
+[2025-08-25 16:11:08 UTC]         [25] QueryTiersOrderDate() -> Variant
+[2025-08-25 16:11:08 UTC]         [26] QueryTiersTypeOrderDate() -> Variant
+[2025-08-25 16:11:08 UTC]         [27] QueryCollaborateurType() -> Variant
+[2025-08-25 16:11:08 UTC]         [28] QueryTiersDateOrderDate() -> Variant
+[2025-08-25 16:11:08 UTC]         [29] QueryTiersTypeDateOrderDate() -> Variant
+[2025-08-25 16:11:08 UTC]         [30] QueryTypeDateOrderPiece() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCIALApplication100c.FactoryCategorieTarif
+[2025-08-25 16:11:08 UTC]      📋 1 propriétés, 🔧 9 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [10] ExistIntitule : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] ReadIntitule() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCIALApplication100c.FactorySoucheAchat
+[2025-08-25 16:11:08 UTC]      📋 1 propriétés, 🔧 10 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [10] ExistIntitule : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] ReadIntitule() -> Variant
+[2025-08-25 16:11:08 UTC]         [12] QuerySoucheValide() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCIALApplication100c.FactoryDocument
+[2025-08-25 16:11:08 UTC]      📋 1 propriétés, 🔧 9 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [21] InfoLibreFields : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [22] CreateInfoLibre() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCIALApplication100c.FactoryCategorieComptaVente
+[2025-08-25 16:11:08 UTC]      📋 1 propriétés, 🔧 9 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [10] ExistIntitule : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] ReadIntitule() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCIALApplication100c.FactorySoucheVente
+[2025-08-25 16:11:08 UTC]      📋 1 propriétés, 🔧 10 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [10] ExistIntitule : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] ReadIntitule() -> Variant
+[2025-08-25 16:11:08 UTC]         [12] QuerySoucheValide() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCIALApplication100c.FactoryPeriodicite
+[2025-08-25 16:11:08 UTC]      📋 1 propriétés, 🔧 9 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [10] ExistIntitule : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] ReadIntitule() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCIALApplication100c.FactoryParamDocVente
+[2025-08-25 16:11:08 UTC]      📋 1 propriétés, 🔧 10 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [10] ExistIntitule : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] ReadIntitule() -> Variant
+[2025-08-25 16:11:08 UTC]         [12] ReadTypeDocument() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCIALApplication100c.FactoryDepot
+[2025-08-25 16:11:08 UTC]      📋 2 propriétés, 🔧 10 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [12] ExistCompteur : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]         [10] ExistIntitule : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] ReadIntitule() -> Variant
+[2025-08-25 16:11:08 UTC]         [13] ReadCompteur() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCIALApplication100c.FactoryDocumentStock
+[2025-08-25 16:11:08 UTC]      📋 1 propriétés, 🔧 16 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [23] ExistPiece : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [20] CreateType() -> Variant
+[2025-08-25 16:11:08 UTC]         [21] QueryTypeOrderPiece() -> Variant
+[2025-08-25 16:11:08 UTC]         [22] QueryTypePieceOrderPiece() -> Variant
+[2025-08-25 16:11:08 UTC]         [24] ReadPiece() -> Variant
+[2025-08-25 16:11:08 UTC]         [25] QueryDepotOrderType() -> Variant
+[2025-08-25 16:11:08 UTC]         [26] _QuerySynchroType() -> Variant
+[2025-08-25 16:11:08 UTC]         [27] _QuerySynchroOIDType() -> Variant
+[2025-08-25 16:11:08 UTC]         [28] QueryTypeDateOrderPiece() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCIALApplication100c.FactoryBaremeRabais
+[2025-08-25 16:11:08 UTC]      📋 1 propriétés, 🔧 11 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [10] ExistIntitule : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] ReadIntitule() -> Variant
+[2025-08-25 16:11:08 UTC]         [12] QueryApplicableDate() -> Variant
+[2025-08-25 16:11:08 UTC]         [13] QueryApplicableArticleDate() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCIALApplication100c.FactoryArticleStat
+[2025-08-25 16:11:08 UTC]      📋 1 propriétés, 🔧 9 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [10] ExistIntitule : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] ReadIntitule() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCIALApplication100c.FactoryConditionnement
+[2025-08-25 16:11:08 UTC]      📋 1 propriétés, 🔧 9 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [10] ExistIntitule : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] ReadIntitule() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCIALApplication100c.FactoryGlossaire
+[2025-08-25 16:11:08 UTC]      📋 1 propriétés, 🔧 9 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [10] ExistIntitule : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] ReadIntitule() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCIALApplication100c.FactoryCategorieComptaStock
+[2025-08-25 16:11:08 UTC]      📋 1 propriétés, 🔧 9 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [10] ExistIntitule : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] ReadIntitule() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCIALApplication100c.FactoryParamDocAchat
+[2025-08-25 16:11:08 UTC]      📋 1 propriétés, 🔧 10 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [10] ExistIntitule : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] ReadIntitule() -> Variant
+[2025-08-25 16:11:08 UTC]         [12] ReadTypeDocument() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCIALApplication100c.FactoryUnite
+[2025-08-25 16:11:08 UTC]      📋 1 propriétés, 🔧 9 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [10] ExistIntitule : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] ReadIntitule() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCIALApplication100c.FactorySoucheStock
+[2025-08-25 16:11:08 UTC]      📋 1 propriétés, 🔧 10 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [10] ExistIntitule : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] ReadIntitule() -> Variant
+[2025-08-25 16:11:08 UTC]         [12] QuerySoucheValide() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCIALApplication100c.FactoryParamDocInterne
+[2025-08-25 16:11:08 UTC]      📋 1 propriétés, 🔧 10 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [10] ExistIntitule : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] ReadIntitule() -> Variant
+[2025-08-25 16:11:08 UTC]         [12] ReadTypeDocument() -> Variant
+[2025-08-25 16:11:08 UTC]   📦 BSCIALApplication100c.FactoryProduit
+[2025-08-25 16:11:08 UTC]      📋 1 propriétés, 🔧 9 méthodes
+[2025-08-25 16:11:08 UTC]      📋 PROPRIÉTÉS DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [10] ExistIntitule : Variant [get]
+[2025-08-25 16:11:08 UTC]              Propriété Variant - Accès: get
+[2025-08-25 16:11:08 UTC]      🔧 MÉTHODES DÉTAILLÉES:
+[2025-08-25 16:11:08 UTC]         [1] List() -> Variant
+[2025-08-25 16:11:08 UTC]         [2] Create() -> void
+[2025-08-25 16:11:08 UTC]         [3] Read() -> Variant
+[2025-08-25 16:11:08 UTC]         [4] _QuerySynchro() -> Variant
+[2025-08-25 16:11:08 UTC]         [5] _QuerySynchroRemoved() -> Variant
+[2025-08-25 16:11:08 UTC]         [6] ReadFrom() -> Variant
+[2025-08-25 16:11:08 UTC]         [7] ListForward() -> Variant
+[2025-08-25 16:11:08 UTC]         [8] QueryPredicate() -> Variant
+[2025-08-25 16:11:08 UTC]         [11] ReadIntitule() -> Variant
+[2025-08-25 16:11:08 UTC] 
+🎉 Analyse complète terminée !
+[2025-08-25 16:11:08 UTC] 📁 Fichier de log généré: sage_analyzer_log.txt

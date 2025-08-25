@@ -3,12 +3,12 @@ use crate::com::{SafeDispatch, SafeVariant, FromDispatch};
 use windows::Win32::System::Com::IDispatch;
 
 /// Wrapper pour l'objet IBILoggable avec accès typé aux propriétés
-pub struct CptaLoggable {
+pub struct ILoggable {
     pub dispatch: IDispatch,
 }
 
 
-impl CptaLoggable {
+impl ILoggable {
     /// Crée un SafeDispatch temporaire pour les appels
     fn dispatch(&self) -> SafeDispatch {
         SafeDispatch::new(&self.dispatch)
@@ -83,8 +83,8 @@ impl CptaLoggable {
     }
 }
 
-impl FromDispatch for CptaLoggable {
+impl FromDispatch for ILoggable {
     fn from_dispatch(dispatch: IDispatch) -> SageResult<Self> {
-        Ok(CptaLoggable { dispatch })
+        Ok(ILoggable { dispatch })
     }
 }

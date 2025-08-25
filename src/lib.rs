@@ -4,4 +4,4 @@ pub mod wrappers;
 
 pub use com::{ComInstance, SafeDispatch, SafeString, SafeVariant};
 pub use errors::{SageError, SageResult};
-pub use wrappers::{CptaApplication, CptaLoggable};
+pub use wrappers::{CptaApplication, CialApplication, ILoggable};

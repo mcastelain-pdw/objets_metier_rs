@@ -3,16 +3,16 @@ use crate::com::{ComInstance, SafeDispatch, SafeVariant};
 use crate::wrappers::{ILoggable};
 
 /// Wrapper pour l'application BSCPTAApplication avec accès typé aux propriétés
-pub struct CptaApplication {
+pub struct CialApplication {
     instance: ComInstance,
 }
 
-impl CptaApplication {
-    /// Crée un wrapper CptaApplication à partir d'un CLSID
+impl CialApplication {
+    /// Crée un wrapper CialApplication à partir d'un CLSID
     pub fn new(clsid: &str) -> SageResult<Self> {
         let instance = ComInstance::new(clsid)?;
         
-        Ok(CptaApplication {
+        Ok(CialApplication {
             instance,
         })
     }
@@ -84,9 +84,9 @@ impl CptaApplication {
         Ok(())
     }
 
-    /// Accède à l'objet FactoryJournal - ÉQUIVALENT .FactoryJournal en C#/VB
-    pub fn factory_journal(&self) -> SageResult<SafeVariant> {
-        self.dispatch()?.call_method_by_name("FactoryJournal", &[])
+    /// Accède à l'objet FactoryArticle - ÉQUIVALENT .FactoryArticle en C#/VB
+    pub fn factory_article(&self) -> SageResult<SafeVariant> {
+        self.dispatch()?.call_method_by_name("FactoryArticle", &[])
     }
 
     /// Obtient les informations sur la base de données
